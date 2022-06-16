@@ -2,7 +2,7 @@
 <header>
   
   <!-- ナビゲーションバーのレイアウト -->
-  <nav class ="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;" role="navigation">
+  <nav class ="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
     <div class="container-fluid">
       <!-- 店名ロゴの表示-->
       <a class="navbar-brand" href="#" style="font-family: cursive;">
@@ -15,7 +15,7 @@
         aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-nav" id="navbarNavDropdown">
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <!-- ユーザーがログインしている＆会員の場合に表示 -->
           <% if customer_signed_in? %>
@@ -38,16 +38,26 @@
                 <i class="fa-solid fa-right-from-bracket"></i>ログアウト
               <% end %>
             </li>
+          <!-- 未ログインの場合に表示 -->
           <% else %>
-            <li>About</li>
-            <li>商品一覧</li>
+            <li class="nav-link text-dark">
+              <i class="fa-solid fa-shop" style="margin-right: 5px;"></i>
+              About
+            </li>
+            <li class="nav-link text-dark">
+              <i class="fa-solid fa-book-open" style="margin-right: 5px;"></i>
+              商品一覧 
+            </li>
             <li>
-              <%= link_to new_customer_registration_path, class: 'nav-link' do %>
-                <i class="fa-solid fa-house-chimney"></i>新規登録</li>
+              <%= link_to new_customer_registration_path, class: 'nav-link text-dark' do %>
+                <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i>
+                新規登録
               <% end %>
+            </li>
             <li>
               <%= link_to new_customer_session_path, class: 'nav-link text-dark' do %>
-                <i class="fa-solid fa-right-to-bracket"></i>ログイン
+                <i class="fa-solid fa-right-to-bracket" style="margin-right: 5px;"></i>
+                ログイン
               <% end %>
             </li>
           <% end %>

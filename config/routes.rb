@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
+    #genresのルーティング
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
   end
 
   namespace :public do

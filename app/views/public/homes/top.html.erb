@@ -1,12 +1,24 @@
-<h1>Public::Homes#top</h1>
-<p>
-  ようこそ、ながのCAKEへ！<br>
-  このサイトは、ケーキ販売のECサイトになります。<br>
-  会員でない方も商品の閲覧はできますが、<br>
-  購入には会員登録が必要になります。<br>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <p>ジャンル検索</p>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <div style="text-align: center">
+        <div class="box">
+        <p class="border">
+        ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。<br>
+        </p>
+      </div>
+    </div>
+    <div class="mt-3">
+      <h2>新着商品</h2>
+      <%= link_to "全ての商品を見る", public_products_index_path %>
+    </div>
+  </div>
+</div>
 
-<h2>新着商品</h2>
 
-
-<%= link_to "全ての商品を見る", public_products_index_path %>

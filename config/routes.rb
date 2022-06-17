@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  root to: 'admin/homes#top' 
+  
+  devise_scope :admin do
+    root to: "admin/sessions#new"
+  end
+  
+  get 'public/homes/about' => 'homes#about', as: 'about'
 
   namespace :admin do
     get 'homes/top'

@@ -40,9 +40,11 @@
             </li>
           <!-- 未ログインの場合に表示 -->
           <% else %>
-            <li class="nav-link text-dark">
+            <li>
+              <%= link_to about_path, class: 'nav-link text-dark' do %>
               <i class="fa-solid fa-shop" style="margin-right: 5px;"></i>
               About
+              <% end %>
             </li>
             <li class="nav-link text-dark">
               <i class="fa-solid fa-book-open" style="margin-right: 5px;"></i>

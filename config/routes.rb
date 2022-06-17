@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    #genresのルーティング
+    #genresのnew,showを除くルーティング自動生成
     resources :genres, except: [:new, :show]
   end
 

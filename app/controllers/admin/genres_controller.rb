@@ -8,9 +8,9 @@ class Admin::GenresController < ApplicationController
   end
   
   def create
-    @genre = Genre.new(category_params)
+    @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to genres_path
+      redirect_to admin_genres_path
     else
       @genres = Genre.all
       render 'index'
@@ -21,8 +21,8 @@ class Admin::GenresController < ApplicationController
   end
   
   def update
-    if @genre.update(category_params)
-      redirect_to genres_path
+    if @genre.update(genre_params)
+      redirect_to admin_genres_path
     else
       render 'edit'
     end
@@ -30,16 +30,15 @@ class Admin::GenresController < ApplicationController
   
   def destroy
     @genre.destroy
-    redirect_to genres_path
+    redirect_to admin_genres_path
   end
   
     private
-  　#set_genreメソッド
+    
     def set_genre
       @genre = Genre.find(params[:id])
     end
     
-    #ストロングパラメーター
     def genre_params
       params.require(:genre).permit(:name)
     end

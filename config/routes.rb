@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root to: 'admin/homes#top' 
 
   namespace :admin do
     get 'homes/top'

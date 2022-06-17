@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
+    #genresのnew,showを除くルーティング自動生成
+    resources :genres, except: [:new, :show]
   end
 
   namespace :public do

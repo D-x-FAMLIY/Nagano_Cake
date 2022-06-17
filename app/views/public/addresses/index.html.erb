@@ -20,8 +20,21 @@
   </div>
 <% end %>
 
-<% @addresses.each do |address| %>
-  <%= address.post_code %>
-  <%= address.address %>
-  <%= address.name %>
-<% end %>
+<table>
+  <tr>
+    <th>郵便番号</th>
+    <th>住所</th>
+    <th>宛名</th>
+    <th></th>
+  </tr>
+  <tr>
+    <% @addresses.each do |address| %>
+      <td><%= address.post_code %></td>
+      <td><%= address.address %></td>
+      <td><%= address.name %></td>
+      <td>
+      <%= link_to "編集する", public_addresses_edit_path %>
+      </td>
+    <% end %>
+  </tr>
+</table>

@@ -20,21 +20,26 @@
   </div>
 <% end %>
 
-<table>
-  <tr>
-    <th>郵便番号</th>
-    <th>住所</th>
-    <th>宛名</th>
-    <th></th>
-  </tr>
-  <tr>
-    <% @addresses.each do |address| %>
-      <td><%= address.post_code %></td>
-      <td><%= address.address %></td>
-      <td><%= address.name %></td>
-      <td>
-      <%= link_to "編集する", public_addresses_edit_path %>
-      </td>
-    <% end %>
-  </tr>
+<table border="1" style="border-collapse: collapse">
+  <thead>
+    <tr bgcolor="#eeeeee">
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @addresses.each do |address| %>
+        <td><%= address.post_code %></td>
+        <td><%= address.address %></td>
+        <td><%= address.name %></td>
+        <td>
+          <%= link_to "編集する", public_addresses_edit_path %>
+          <%= link_to "削除する", public_addresses_path(@address), method: :delete %>
+        </td>
+      <% end %>
+    </tr>
+  </tbody>
 </table>

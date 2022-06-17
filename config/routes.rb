@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     #genresのルーティング
-    resources :genres, only: [:index, :create, :edit, :update, :destroy]
+    resources :genres, except: [:new, :show]
   end
 
   namespace :public do

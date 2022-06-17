@@ -1,4 +1,5 @@
 class Admin::GenresController < ApplicationController
+  #アクションが動く前にset_genreメソッドを実行
   before_action :set_genre, only: [:edit, :update, :destroy]
   
   def index
@@ -33,11 +34,12 @@ class Admin::GenresController < ApplicationController
   end
   
     private
-  
+  　#set_genreメソッド
     def set_genre
       @genre = Genre.find(params[:id])
     end
     
+    #ストロングパラメーター
     def genre_params
       params.require(:genre).permit(:name)
     end

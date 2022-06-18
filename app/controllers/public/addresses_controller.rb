@@ -1,5 +1,6 @@
 class Public::AddressesController < ApplicationController
 
+
   def index
     @address = Address.new
     @addresses = Address.all
@@ -7,8 +8,9 @@ class Public::AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
+    @address.customer_id = current_customer.id
     @address.save
-    redirect_to request.referer
+    redirect_to public_addresses_path
   end
 
   def edit
@@ -27,6 +29,7 @@ class Public::AddressesController < ApplicationController
     redirect_to request.referer
   end
   private
+
   def address_params
     params.require(:address).permit(:post_code, :address, :name)
   end

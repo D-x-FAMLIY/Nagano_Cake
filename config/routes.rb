@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  # adminログイン画面をトップページに設定
-  # devise_scope :admin do
-    # root to: "admin/sessions#new"
-  # end
-  
-  # get 'public/homes/about' => 'homes#about', as: 'about'
 
   namespace :admin do
     get 'homes/top'
@@ -29,8 +23,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    #genresのnew,showを除くルーティング自動生成
-    resources :genres, except: [:new, :show]
+    get 'genres/index'
+    get 'genres/edit'
   end
 
   namespace :public do

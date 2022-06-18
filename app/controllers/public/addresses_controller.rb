@@ -14,13 +14,13 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
-    #@address = Address.find(params[:id])
+    @address = Address.find(params[:id])
   end
 
   def update
-    address = Address.find(params[:id])
-    address.update(address_params)
-    redirect_to addresses_path
+    @address = Address.find(params[:id])
+    @address.customer_id = current_customer.id
+    redirect_to public_addresses_path
   end
 
   def destroy

@@ -23,7 +23,7 @@
         <% @products.each do |product| %>
           <tr>
             <td></td>
-            <td><%= product.name %></td>
+            <td><%= link_to product.name, public_product %></td>
             <td><%= product.price_without_tax %></td>
           </tr>
          <% end %>

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'products/index'
     get 'products/new'
+    # create追加
+    get 'products/create'
     get 'products/show'
     get 'products/edit'
   end

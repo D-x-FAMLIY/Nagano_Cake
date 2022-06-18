@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     #root to: "admin/sessions#new"
   #end
 
-  # get 'public/homes/about' => 'homes#about', as: 'about'
+   get 'public/homes/about' => 'homes#about', as: 'about'
 
   namespace :admin do
     get 'homes/top'

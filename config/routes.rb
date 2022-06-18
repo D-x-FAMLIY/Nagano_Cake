@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root to: 'public/homes#top'
   get 'public/homes/about' => 'public/homes#about', as: 'about'
 

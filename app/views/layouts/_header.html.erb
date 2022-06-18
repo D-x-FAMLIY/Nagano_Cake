@@ -19,12 +19,24 @@
         <ul class="navbar-nav ml-auto">
           <!-- ユーザーがログインしている＆会員の場合に表示 -->
           <% if customer_signed_in? %>
-            <li>マイページ</li>
-            <li>商品一覧</li>
-            <li>カート</li>
+            <li>
+                <%= link_to public_customer_path(customer.id),  class: 'nav-link text-dark' do %>
+                  マイページ
+                <% end %>
+              </li>
+            <li>
+              <%= link_to public_products_path, class: 'nav-link text-dark' do %>
+                <i class="fa-solid fa-book-open" style="margin-right: 5px;"></i>
+                商品一覧
+              <% end %>
+            </li>
+            <li>
+              カート
+            </li>
             <li>
               <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-right-from-bracket"></i>
+                ログアウト
               <% end %>
             </li>
           <!-- ユーザーがログインしているかつ管理者の場合に表示 -->
@@ -46,9 +58,11 @@
               About
               <% end %>
             </li>
-            <li class="nav-link text-dark">
-              <i class="fa-solid fa-book-open" style="margin-right: 5px;"></i>
-              商品一覧 
+            <li>
+              <%= link_to public_products_path, class: 'nav-link text-dark' do %>
+                <i class="fa-solid fa-book-open" style="margin-right: 5px;"></i>
+                商品一覧 
+              <% end %>
             </li>
             <li>
               <%= link_to new_customer_registration_path, class: 'nav-link text-dark' do %>

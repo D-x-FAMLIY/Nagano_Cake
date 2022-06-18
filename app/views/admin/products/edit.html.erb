@@ -2,57 +2,37 @@
 
 <h2>商品編集</h2>
 
-
+<%= form_with model:product,local:true do |f| %>
 <table>
-
 <tr>
-  <th>商品新規登録</th>
-  <th>
-
-    <%= f.text_field :, "商品名" %>
-  </th>
+  <th><%= f.label :商品画像 %></th>
+  <th><%= f.file_field :image, accept: "image/*" %></th>
 </tr>
 
 <tr>
-  <th>商品画像</th>
-  <th>
-  <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
-  </th>
+  <th><%= f.label :商品名 %></th>
+  <th><%= f.text_field :name,  %></th>
 </tr>
 
 <tr>
-  <th>商品名</th>
-  <th>
-
-    <%= f.text_field :, "商品名" %>
-  </th>
+  <th><%= f.label :商品説明 %></th>
+  <th><%= f.text_area :introduction,  %></th>
 </tr>
 
 <tr>
-  <th>商品説明</th>
-  <th>
-
-    <%= f.text_area :, "商品名" %>
-  </th>
-</tr>
-
-<tr>
-  <th>ジャンル</th>
+  <th><%= f.label :ジャンル %></th>
   <th>
 　セレクトボックスを設置する。
   </th>
 </tr>
 
 <tr>
-  <th>税抜価格</th>
-  <th>
-    <%= f.text_field :, "商品名" %>
-    円
-  </th>
+  <th><%= f.label :税抜価格 %></th>
+  <th><%= f.text_field :price_without_tax,  %>円</th>
 </tr>
 
 <tr>
-  <th>販売ステータス</th>
+  <th><%= f.label :販売ステータス %></th>
   <th>
   ラジオボックス設置
   </th>
@@ -60,5 +40,7 @@
 </table>
 
 <div>
-  <%= f.submit "新規登録", class: 'btn btn-success'%>
+  <%= f.submit "変更を保存", class: 'btn btn-success'%>
 </div>
+
+<% end %>

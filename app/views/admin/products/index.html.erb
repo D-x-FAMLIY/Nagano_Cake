@@ -3,21 +3,28 @@
 
 <h2>商品一覧</h2>
 
-<table>
-  <tr>
-    <th>商品ID</th>
-    <th>商品名</th>
-    <th>税抜価格</th>
-    <th>ジャンル</th>
-    <th>ステータス</th>
-  </tr>
-  <tr>
-    <td>商品ID</td>
-    <td>商品名</td>
-    <td>税抜価格</td>
-    <td>ジャンル</td>
-    <td>ステータス</td>
-  </tr>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <%= products.each do |product| %>|
+    <tr>
+      <td><%= product.id %></td>
+      <td><%= product.name %></td>
+      <td><%= product.price_without_tax %></td>
+      <!--ジャンルにアソシエーション-->
+      <td><%= product.genre %></td>
+      <td>ステータスの記述を書く</td>
+    </tr>
+  </tbody>
 </table>
 
 

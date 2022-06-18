@@ -2,28 +2,40 @@
 <h1>商品詳細ページです。</h1>
 
 
+<h4>商品詳細</h4>
+
+<%= products.each do |product| %>
+  <div>画像詳細</div>
+  
+  <div>
+    商品名
+    <%= product.name %>
+  </div>
+  
+  <div>
+    商品説明
+    <%= product.introduction %>
+  </div>
+  
+  <div>
+    ジャンル
+    
+  </div>
+  
+  <div>
+    税込価格
+  
+  </div>
+  <div>
+    (税抜価格)
+    (<%= product.price_without_tax %>)
+  </div>
+  
+  <div>販売ステータス</div>
+  
+  <!--productのidのeditに移動するようにする。-->
+  <%= link_to "編集する", admin_products_edit_path, class: 'btn btn-success' %>
 
 
 
-<h2>商品詳細</h2>
-
-
-<div>画像詳細</div>
-
-<div>商品名</div>
-
-<div>商品説明</div>
-
-<div>ジャンル</div>
-
-<div>税込価格</div>
-<div>(税抜価格)</div>
-
-<div>販売ステータス</div>
-
-
-<%= link_to "編集する", '#', class: 'btn btn-success' %>
-
-
-
-
+<% end %>

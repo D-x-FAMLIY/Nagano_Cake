@@ -12,7 +12,6 @@
           <br>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"40" %>
         </div>
-      <% end %>
 
         <div class="field">
           <%= f.label :パスワード %>
@@ -30,6 +29,7 @@
         <div class="actions">
           <%= f.submit "ログイン" %>
         </div>
+       <% end %>
 
       <p>会員登録がお済みでない方</p>
         <%= render "public/shared/links" %>

@@ -1,63 +1,48 @@
 <h1>商品新規登録ページです。</h1>
 
 
+
+  <h4>商品新規登録</h4>
+
+
+<%= form_with model:@product, url: admin_products_edit_path  do |f| %>
 <table>
+  <tr>
+    <td><%= f.label :商品画像 %></td>
+    <td><%= f.file_field :image, accept: "image/*" %></td>
+  </tr>
 
-<tr>
-  <th>商品新規登録</th>
-  <th>
+  <tr>
+    <td><%= f.label :商品名 %></td>
+    <td><%= f.text_field :name, placeholder: "商品名" %></td>
+  </tr>
 
-    <%= f.text_field :, "商品名" %>
-  </th>
-</tr>
+  <tr>
+    <td><%= f.label :商品説明 %></td>
+    <td><%= f.text_area :introduction, placeholder: "ここに説明文を記述します" %></td>
+  </tr>
 
-<tr>
-  <th>商品画像</th>
-  <th>
-  <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
-  </th>
-</tr>
+  <tr>
+    <td><%= f.label :ジャンル %></td>
+    <td>セレクトボックスを設置する。</td>
+  </tr>
 
-<tr>
-  <th>商品名</th>
-  <th>
+  <tr>
+    <td><%= f.label :税抜価格 %></td>
+    <td>
+      <%= f.text_field :price_without_tax, placeholder: "1000" %>
+      円
+    </td>
+  </tr>
 
-    <%= f.text_field :, "商品名" %>
-  </th>
-</tr>
-
-<tr>
-  <th>商品説明</th>
-  <th>
-
-    <%= f.text_area :, "商品名" %>
-  </th>
-</tr>
-
-<tr>
-  <th>ジャンル</th>
-  <th>
-　セレクトボックスを設置する。
-  </th>
-</tr>
-
-<tr>
-  <th>税抜価格</th>
-  <th>
-    <%= f.text_field :, "商品名" %>
-    円
-  </th>
-</tr>
-
-<tr>
-  <th>販売ステータス</th>
-  <th>
-  ラジオボックス設置
-  </th>
-</tr>
+  <tr>
+    <td><%= f.label :販売ステータス %></td>
+    <td>ラジオボタン設置</td>
+  </tr>
 </table>
 
 <div>
-  <%= f.submit "新規登録", class: 'btn btn-success' %>
+  <%= f.submit "新規登録", class: 'btn btn-success'%>
 </div>
 
+<% end %>

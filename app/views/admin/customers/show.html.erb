@@ -1,25 +1,49 @@
 
 <h1>会員の詳細ページです。</h1>
 
+
+
 <!--定義された名前を持ってくる-->
-<h2>さんの会員詳細</h2>
+<h2><%= customer.last_name %> <%= customer.first_name %>
+    さんの会員詳細</h2>
 
-
-  <p>会員ID</p>
-  <p>氏名</p>
-  <p>フリガナ</p>
-  <p>郵便番号</p>
-  <p>住所</p>
-  <p>電話番号</p>
-  <p>メールアドレス</p>
-  <p>会員ステータス</p>
-
-
-
-
-
+  <div>
+    <p>会員ID</p>
+    <p><%= customer.id %></p>
+  </div>
+  <div>
+    <p>氏名</p>
+    <p><%= customer.last_name %> <%= customer.first_name %></p>
+  </div>
+  <div>
+    <p>フリガナ</p>
+    <p><%= customer.last_kana %> <%= customer.first_kana %></p>
+  </div>
+  <div>
+    <p>郵便番号</p>
+    <p><%= customer.post_code %></p>
+  </div>
+  <div>
+   <p>住所</p>
+   <p><%= customer.address %></p>
+  </div>
+  <div>
+    <p>電話番号</p>
+    <p><%= customer.phone_number %></p>
+  </div>
+  <div>
+    <p>メールアドレス</p>
+    <p><%= customer.email %></p>
+  </div>
+  <div>
+    <p>会員ステータス</p>
+    <!--ステータスの記述を行う。-->
+    <p>ステータス表示</p>
+  </div>
+  
+  
 
 　<!--編集のedit_pathを置き換える-->
-<%= link_to "編集する", '#', class: 'btn btn-success' %>
+<%= link_to "編集する", admin_customers_edit_path, class: 'btn btn-success' %>
   <!--履歴一覧のpathに置き換える-->
-<%= link_to "注文履歴一覧を見る", '#', class: 'btn btn-info' %>
+<%= link_to "注文履歴一覧を見る", admin_homes_top_path, class: 'btn btn-primary' %>

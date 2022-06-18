@@ -3,17 +3,26 @@
 
 <h2>会員一覧</h2>
 
-<table>
-  <tr>
-    <th>会員ID</th>
-    <th>氏名</th>
-    <th>メールアドレス</th>
-    <th>ステータス</th>
-  </tr>
-  <tr>
-    <td>会員ID</td>
-    <td>氏名</td>
-    <td>メールアドレス</td>
-    <td>ステータス</td>
-  </tr>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= customers.each do |customer| %>|
+    <tr>
+      <td><%= customer.id %></td>
+      <td><%= customer.last_name %> <%= customer.first_name %></td>
+      <td><%= customer.email %></td>
+      <td>ステータスの記述を書く</td>
+    </tr>
+  </tbody>
 </table>
+
+
+<!--ページネーション入れる-->

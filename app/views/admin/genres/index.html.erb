@@ -18,15 +18,18 @@
           </tr>
         </thead>
         <tbody>
+          <!-- 作成されたジャンルを一つずつ取り出す -->
           <% @genres.each do |genre| %>
           <tr>
             <td>
               <span>
+                <!-- ジャンルの表示 -->
                 <%= genre.name %>
               </span>
               <br>
             </td>
             <td>
+              <!-- 削除リンクの -->
               <%= link_to '削除', admin_genre_path(genre), method: :delete, data: {comfirm: '本当に削除しますか？', class: 'btn-sm btn-danger'} %>
             </td>
           </tr>

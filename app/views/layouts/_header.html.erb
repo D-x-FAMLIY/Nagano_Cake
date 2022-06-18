@@ -5,7 +5,7 @@
   <nav class ="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
     <div class="container-fluid">
       <!-- 店名ロゴの表示-->
-      <a class="navbar-brand" href="#" style="font-family: cursive;">
+      <a class="navbar-brand" href="/" style="font-family: cursive;">
         <span>naganoCAKE</span>
       </a>
       <!-- ナビゲーション要素の追加 -->
@@ -40,9 +40,11 @@
             </li>
           <!-- 未ログインの場合に表示 -->
           <% else %>
-            <li class="nav-link text-dark">
+            <li>
+              <%= link_to about_path, class: 'nav-link text-dark' do %>
               <i class="fa-solid fa-shop" style="margin-right: 5px;"></i>
               About
+              <% end %>
             </li>
             <li class="nav-link text-dark">
               <i class="fa-solid fa-book-open" style="margin-right: 5px;"></i>
@@ -67,3 +69,5 @@
   </nav>
   
 </header>
+
+<!--追加-->

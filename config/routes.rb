@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  # adminログイン画面をトップページに設定
+  #adminログイン画面をトップページに設定
   # devise_scope :admin do
     # root to: "admin/sessions#new"
   # end

@@ -1,15 +1,33 @@
 <div class="container">
   <div class="row">
-  <h1>Public::Products#index</h1>
     <div class="col-md-3">
-      <p>ジャンル検索</p>
+      <table>
+        <tr>
+          <th>ジャンル検索</th>
+        </tr>
+        <% @genres.each do |genre| %>
+          <tr>
+            <td><%= genre.name %></td>
+          </tr>
+        <% end %>
+      </table>
     </div>
-    <div class="col-md-8 offset-md-1">
-      <h2>商品一覧</h2>
-      <h5>(全<% @products.count %>件)</h5>
-      <% @products.each do |product| %>
-
-      <% end %>
+    <div class="col-md-8">
+      <table>
+        <tr>
+          <th>
+            <h3>商品一覧</h3>
+            <p>(全<% @products.count %>件)</p>
+          </th>
+        </tr>
+        <% @products.each do |product| %>
+          <tr>
+            <td></td>
+            <td><%= product.name %></td>
+            <td><%= product.price_without_tax %></td>
+          </tr>
+         <% end %>
+      </table>
     </div>
   </div>
 </div>

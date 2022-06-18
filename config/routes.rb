@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   #adminログイン画面をトップページに設定
-  devise_scope :admin do
-    root to: "admin/sessions#new"
-  end
+  #devise_scope :admin do
+    #root to: "admin/sessions#new"
+  #end
 
    get 'public/homes/about' => 'homes#about', as: 'about'
 
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-    resources :address, except: [:show]
+    resources :addresses, except: [:show]
     #get 'addresses/index'
     #get 'addresses/edit'
   end

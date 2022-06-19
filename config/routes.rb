@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'public/homes/about' => 'public/homes#about', as: 'about'
 
   namespace :admin do
+    root to: 'homes#top'
     resources :homes, only: [:top]
     resources :orders, only: [:show]
     resources :products
@@ -40,12 +41,12 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :update, :create, :destroy]
     #get 'cart_items/index'
     delete 'cart_items/destroy_all'
-    resources :orders, except: [:edit, :update]
-    get 'orders/complete'
-    post 'orders/confirm'
+    resources :orders, except: [:edit, :update, :show]
+    get 'orders/complete' => 'orders#complete'
+    post 'orders/confirm' => 'orders#confirm'
     #get 'orders/new'
     #get 'orders/index'
-    #get 'orders/show'
+    get 'orders/show' => 'orders#show'
   end
 
 # 顧客用

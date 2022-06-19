@@ -30,8 +30,8 @@
             </td>
             <td>
               <!-- 削除リンクの -->
-              <%= link_to '削除', admin_genre_path(genre), method: :delete, data: {comfirm: '本当に削除しますか？', class: 'btn-sm btn-danger'} %>
               <%= link_to '編集', edit_admin_genre_path(genre) %>
+              <%= link_to '削除', admin_genre_path(genre), method: :delete, data: {comfirm: '本当に削除しますか？', class: 'btn-sm btn-danger'} %>
             </td>
           </tr>
           <% end %>

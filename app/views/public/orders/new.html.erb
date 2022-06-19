@@ -1,2 +1,19 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="margin-top: 50px;">
+      <h1>予約フォーム</h1>
+        <ol class="nav" style="text-align-center">
+          <li class="current" style="margin-right: 10px;">1.入力</li>
+          <li style="margin-right:10px; margin-left: 20px;">2.確認</li>
+          <li style="margin-left: 30px;">3.完了</li>
+        </ol>
+    </div>
+    <div class="col-md-6" style="margin-top: 50px;">
+      <h4>支払い方法</h4>
+      <%= form_with model: @order, url: public_orders_show_path, method: :post do |f| %>
+        <%= f.text_field :name %>
+      <% end %>
+    </div>
+        <div class="col-md-3"></div>
+  </div>
+</div>

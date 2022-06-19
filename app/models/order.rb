@@ -2,6 +2,8 @@ class Order < ApplicationRecord
   belongs_to :customer
   
   has_many :product_orders, dependent: :destroy
+  
+  enum payment_method: { credit_card: 0, transfer: 1 }
 
   validates :name, presence:true
   validates :post_code, presence:true

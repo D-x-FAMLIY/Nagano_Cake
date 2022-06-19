@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
+
       <p>ジャンル検索<i class="fa-solid fa-magnifying-glass"></i></p>
     </div>
     
@@ -13,11 +14,15 @@
         会員でない方も商品の閲覧はできますが、<br>
         購入には会員登録が必要になります。<br>
         </p>
-      </div>
     </div>
+        
+    <div class="col-md-8 offset-md-4 mt-3">
+      <h2>新着商品</h2>
+      <% @products.each do |product| %>
+        <td><%= product.name %></td>
+      <% end %>
+      <%= link_to "全ての商品を見る", public_products_path %>
 
-
-      
     </div>
   </div>
 </div>

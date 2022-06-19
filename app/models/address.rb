@@ -1,6 +1,5 @@
 class Address < ApplicationRecord
-  belongs_to :user
-
+  belongs_to :customer
 
   validates :post_code, presence: true
   validates :address, presence: true

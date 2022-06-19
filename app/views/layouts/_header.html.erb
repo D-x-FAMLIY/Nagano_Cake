@@ -20,9 +20,9 @@
           <!-- ユーザーがログインしている＆会員の場合に表示 -->
           <% if customer_signed_in? %>
             <li>
-                <%= link_to public_customer_path(customer.id),  class: 'nav-link text-dark' do %>
+                
                   マイページ
-                <% end %>
+                
               </li>
             <li>
               <%= link_to public_products_path, class: 'nav-link text-dark' do %>

@@ -5,7 +5,7 @@
   <h4>商品新規登録</h4>
 
 
-<%= form_with model:@product, url: admin_products_edit_path  do |f| %>
+<%= form_with model:@product, url: admin_products_path  do |f| %>
 <table>
   <tr>
     <td><%= f.label :商品画像 %></td>
@@ -24,7 +24,12 @@
 
   <tr>
     <td><%= f.label :ジャンル %></td>
-    <td>セレクトボックスを設置する。</td>
+    <td>
+      <!--ジャンルから持ってきてジャンルを選択する-->
+      <%= f.collection_select(:genre, Genre.all, :id, :name, prompt: "--選択してください--")  %>
+
+
+    </td>
   </tr>
 
   <tr>
@@ -37,7 +42,16 @@
 
   <tr>
     <td><%= f.label :販売ステータス %></td>
-    <td>ラジオボタン設置</td>
+    <td>
+      <!--見た目大丈夫　内部のデータ変更-->
+    <%= f.radio_button :is_active, "" %>
+    <%= f.label :is_active, "販売中" %>
+
+    <%= f.radio_button :is_active, "" %>
+    <%= f.label :is_active, "販売停止中" %>
+
+      
+    </td>
   </tr>
 </table>
 

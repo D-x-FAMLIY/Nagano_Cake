@@ -14,10 +14,11 @@
   </thead>
 
   <tbody>
-    <%= customers.each do |customer| %>|
+    <%= @customers.each do |customer| %>|
     <tr>
       <td><%= customer.id %></td>
-      <td><%= customer.last_name %> <%= customer.first_name %></td>
+      <!--リンク確認する-->
+      <td><%= link_to customer.last_name + " " + customer.first_name,"#" %></td>
       <td><%= customer.email %></td>
       <td>ステータスの記述を書く</td>
     </tr>

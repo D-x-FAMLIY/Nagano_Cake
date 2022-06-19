@@ -1,20 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <table>
-        <tr>
-          <th>ジャンル検索</th>
-        </tr>
-        <% @genres.each do |genre| %>
-          <tr>
-            <td><%= genre.name %></td>
-          </tr>
-        <% end %>
 
-      </table>
-
+      <p>ジャンル検索<i class="fa-solid fa-magnifying-glass"></i></p>
     </div>
-    <div class="col-md-8 offset-md-1">
+    
+    <div class="col-md-6" style="margin-top: 50px;">
+      <div style="text-align: center">
+        <div class="box">
         <p class="border">
         ようこそ、ながのCAKEへ！<br>
         このサイトは、ケーキ販売のECサイトになります。<br>
@@ -22,12 +15,14 @@
         購入には会員登録が必要になります。<br>
         </p>
     </div>
+        
     <div class="col-md-8 offset-md-4 mt-3">
       <h2>新着商品</h2>
       <% @products.each do |product| %>
         <td><%= product.name %></td>
       <% end %>
       <%= link_to "全ての商品を見る", public_products_path %>
+
     </div>
   </div>
 </div>

@@ -22,7 +22,7 @@
 <tr>
   <th><%= f.label :ジャンル %></th>
   <th>
-　セレクトボックスを設置する。
+　<%= f.collection_select(:genre, Genre.all, :id, :name)  %>
   </th>
 </tr>
 

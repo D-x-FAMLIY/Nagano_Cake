@@ -4,35 +4,39 @@
 
 <h4>商品詳細</h4>
 
-<%= products.each do |product| %>
-  <div>画像詳細</div>
-  
+
+  <div>
+    画像詳細
+    <%= image_tag product.get_image, size: '200x200' %>
+  </div>
+
   <div>
     商品名
-    <%= product.name %>
+    <%= @product.name %>
   </div>
-  
   <div>
     商品説明
-    <%= product.introduction %>
+    <%= @product.introduction %>
   </div>
-  
   <div>
     ジャンル
-    
+    <%= @product.genre.name %>
   </div>
-  
   <div>
     税込価格
-  
+
   </div>
   <div>
     (税抜価格)
-    (<%= product.price_without_tax %>)
+    (<%= @product.price_without_tax %>)
   </div>
+
+  <div>
+    販売ステータス
   
-  <div>販売ステータス</div>
   
+  </div>
+
   <!--productのidのeditに移動するようにする。-->
   <%= link_to "編集する", admin_products_edit_path, class: 'btn btn-success' %>
 

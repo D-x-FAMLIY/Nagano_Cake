@@ -13,21 +13,21 @@
       <th>ステータス</th>
     </tr>
   </thead>
-  
+
   <tbody>
-    <%= products.each do |product| %>|
+    <%= @products.each do |product| %>|
     <tr>
       <td><%= product.id %></td>
-      <td><%= product.name %></td>
+      <td><%= link_to product.name, admin_product_path %></td>
       <td><%= product.price_without_tax %></td>
       <!--ジャンルにアソシエーション-->
-      <td><%= product.genre %></td>
+      <td><%= product.genre.name %></td>
       <td>ステータスの記述を書く</td>
     </tr>
   </tbody>
 </table>
 
-
+<% end %>
 <!--ページネーション入れる-->
 
 

@@ -14,10 +14,14 @@
 
   <tbody>
     <tr>
-      <td>購入日時</td>
-      <td>購入者</td>
-      <td>注文個数</td>
-      <td>注文ステータス</td>
+      <!--注文の登録日時-->
+      <td><%= orders.created_at %></td>
+      <!--注文の名前-->
+      <td><%= orders.customer.last_name + "　" + order.customer.first_name %></td>
+      <!--注文の注文商品の数量-->
+      <td><%= orders.product_orders.quentity %></td>
+      <!--注文のステータス-->
+      <td><%= orders.status %></td>
     </tr>
   </tbody>
 </table>

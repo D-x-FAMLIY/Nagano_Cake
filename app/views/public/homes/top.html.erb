@@ -3,8 +3,11 @@
     <div class="col-md-3">
 
       <p>ジャンル検索<i class="fa-solid fa-magnifying-glass"></i></p>
+      <% @genres.each do |genre| %>
+        <%= link_to genre.name, public_products_path %>
+      <% end %>
     </div>
-    
+
     <div class="col-md-6" style="margin-top: 50px;">
       <div style="text-align: center">
         <div class="box">
@@ -14,8 +17,10 @@
         会員でない方も商品の閲覧はできますが、<br>
         購入には会員登録が必要になります。<br>
         </p>
+        </div>
+      </div>
     </div>
-        
+
     <div class="col-md-8 offset-md-4 mt-3">
       <h2>新着商品</h2>
       <% @products.each do |product| %>

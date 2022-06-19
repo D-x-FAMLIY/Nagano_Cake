@@ -25,8 +25,9 @@ Rails.application.routes.draw do
     resources :addresses, except: [:show]
     #get 'addresses/index'
     #get 'addresses/edit'
-    resources :customers, except: [:index]
+    resources :customers, except: [:index, :show]
     patch 'customers/decline'
+    get  'customers' => 'customers#show', as: 'show'
     post 'customers/confirm'
     #get 'customers/show'
     #get 'customers/edit'

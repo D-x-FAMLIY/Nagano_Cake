@@ -1,7 +1,5 @@
 class Public::CustomersController < ApplicationController
   def show
-
-    @customer = current_customer
   end
 
   def edit
@@ -16,6 +14,7 @@ class Public::CustomersController < ApplicationController
       render "edit"
     end
   end
+
 
   private
   def customer_params

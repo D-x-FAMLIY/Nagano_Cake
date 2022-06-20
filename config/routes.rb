@@ -38,9 +38,9 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show]
     # get 'products/index'
     # get 'products/show'
+    delete 'cart_items/destroy_all'
     resources :cart_items, only: [:index, :update, :create, :destroy]
     #get 'cart_items/index'
-    delete 'cart_items/destroy_all'
     resources :orders, except: [:edit, :update, :show]
     get 'orders/complete' => 'orders#complete'
     post 'orders/confirm' => 'orders#confirm'

@@ -28,7 +28,7 @@
             <th><%= link_to product.name, public_product_path(product.id) %></th>
           </tr>
           <tr>
-            <th><%= (product.price_without_tax * 1.1).floor %></th>
+            <th><%= ß(product.price_without_tax * 1.1).floor %></th>
           </tr>
         <% end %>
       </table>

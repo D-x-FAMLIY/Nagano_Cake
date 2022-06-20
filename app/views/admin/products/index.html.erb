@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% @products.each do |product| %>|
+    <% @products.each do |product| %>
     <tr>
       <td><%= product.id %></td>
       <td><%= link_to product.name, admin_product_path(product) %></td>
@@ -29,6 +29,9 @@
 
 
     </tr>
+    <% end %>
+    <%= link_to new_admin_product_path do %>
+      <i class="fa-solid fa-plus"></i>
     <% end %>
   </tbody>
 </table>

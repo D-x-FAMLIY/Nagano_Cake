@@ -14,14 +14,19 @@
   </thead>
 
   <tbody>
-    <%= @customers.each do |customer| %>|
+    <% @customers.each do |customer| %>|
     <tr>
       <td><%= customer.id %></td>
       <!--リンク確認する-->
-      <td><%= link_to customer.last_name + " " + customer.first_name,"#" %></td>
+      <td><%= link_to customer.last_name + " " + customer.first_name, admin_customer_path(customer.id) %></td>
       <td><%= customer.email %></td>
-      <td>ステータスの記述を書く</td>
+      <% if customer.is_deleted == false %>
+        <td>有効</td>
+      <% else %>
+        <td>退会</td>
+      <% end %>
     </tr>
+    <% end %>
   </tbody>
 </table>
 

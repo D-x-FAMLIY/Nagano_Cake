@@ -1,4 +1,3 @@
-<h1>商品一覧のページです。</h1>
 
 
 <h2>商品一覧</h2>
@@ -15,19 +14,26 @@
   </thead>
 
   <tbody>
-    <%= @products.each do |product| %>|
+    <% @products.each do |product| %>|
     <tr>
       <td><%= product.id %></td>
-      <td><%= link_to product.name, admin_product_path %></td>
+      <td><%= link_to product.name, admin_product_path(product) %></td>
       <td><%= product.price_without_tax %></td>
       <!--ジャンルにアソシエーション-->
       <td><%= product.genre.name %></td>
-      <td>ステータスの記述を書く</td>
+      <% if product.is_active == true %>
+        <td>販売中</td>
+      <% else %>
+        <td>販売停止中</td>
+      <% end %>
+
+
     </tr>
+    <% end %>
   </tbody>
 </table>
 
-<% end %>
+
 <!--ページネーション入れる-->
 
 

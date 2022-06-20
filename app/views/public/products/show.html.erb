@@ -13,10 +13,16 @@
       </table>
     </div>
     <div class="col-md-9">
-      <%= product.name %>
-      <%= product.introduction %>
-      <%= product.proce_without_tax %>
-      <%= f.submit "カートに入れる", class: 'btn btn-sm btn-success' %>
+      <table>
+        <%= image_tag @product.image, size:"350x300" %>
+      <h2><%= @product.name %></h2>
+      <p><%= @product.introduction %></p>
+      <strong><%= (@product.price_without_tax * 1.1).floor %></strong>
+      </table>
+      <%= image_tag @product.image, size:"350x300" %>
+      <h2><%= @product.name %></h2>
+      <p><%= @product.introduction %></p>
+      <strong><%= (@product.price_without_tax * 1.1).floor %></strong>
     </div>
   </div>
 </div>

@@ -22,11 +22,15 @@
         </tr>
         <% @products.each do |product| %>
           <tr>
-            <td></td>
-            <td><%= link_to product.name, public_product %></td>
-            <td><%= product.price_without_tax %></td>
+            <th><%= image_tag product.image, size:"50x50" %></th>
           </tr>
-         <% end %>
+          <tr>
+            <th><%= link_to product.name, public_product_path(product.id) %></th>
+          </tr>
+          <tr>
+            <th><%= product.price_without_tax %></th>
+          </tr>
+        <% end %>
       </table>
     </div>
   </div>

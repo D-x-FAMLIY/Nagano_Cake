@@ -1,7 +1,5 @@
 <h1>商品新規登録ページです。</h1>
 
-
-
   <h4>商品新規登録</h4>
 
 
@@ -26,9 +24,7 @@
     <td><%= f.label :ジャンル %></td>
     <td>
       <!--ジャンルから持ってきてジャンルを選択する-->
-      <%= f.collection_select(:genre, Genre.all, :id, :name, prompt: "--選択してください--")  %>
-
-
+      <%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "--選択してください--")  %>
     </td>
   </tr>
 
@@ -44,13 +40,13 @@
     <td><%= f.label :販売ステータス %></td>
     <td>
       <!--見た目大丈夫　内部のデータ変更-->
-    <%= f.radio_button :is_active, "" %>
+    <%= f.radio_button :is_active, :true %>
     <%= f.label :is_active, "販売中" %>
 
-    <%= f.radio_button :is_active, "" %>
+    <%= f.radio_button :is_active, :false %>
     <%= f.label :is_active, "販売停止中" %>
 
-      
+
     </td>
   </tr>
 </table>

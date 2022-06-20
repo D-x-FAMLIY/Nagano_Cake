@@ -6,6 +6,11 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# enum日本語対応
+# config.i18n.default_locale = :ja
+# config.i18n.load_path += Dir[Rails.root.join('config/locales/*.yml').to_s]
+
+
 module NaganoCake
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

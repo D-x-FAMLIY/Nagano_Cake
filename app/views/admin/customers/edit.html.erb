@@ -1,13 +1,18 @@
 <h1>会員情報</h1>
-<!--名前のデータを持ってくる-->
-<h2>さんの会員情報編集</h2>
 
-<%= form_with ,model: @customer do |f| %>
+<%= form_with model:@customer, url:admin_customer_path(@customer.id) do |f| %>
+<h2>
+  <%= @customer.last_name %> <%= @customer.first_name %>
+さんの会員情報編集
+</h2>
+
+
 <table>
 
   <tr>
-    <td><%= f.label :会員ID %></td>
-    <td><%= f.text_field :id %></td>
+
+    <td>会員ID</td>
+    <td><%= @customer.id %></td>
   </tr>
 
   <tr>
@@ -21,8 +26,8 @@
   <tr>
     <td><%= f.label :フリガナ %></td>
     <td>
-      <%= f.text_field :last_name %>
-      <%= f.text_field :first_name %>
+      <%= f.text_field :last_kana %>
+      <%= f.text_field :first_kana %>
     </td>
   </tr>
   <tr>
@@ -43,7 +48,13 @@
   </tr>
   <tr>
     <td><%= f.label :会員ステータス %></td>
-    <td>会員ステータスの記述</td>
+    <td>
+      <%= f.radio_button :is_deleted, :false %>
+    <%= f.label :is_deleted, "有効" %>
+
+    <%= f.radio_button :is_deleted, :true %>
+    <%= f.label :is_deleted, "退会" %>
+    </td>
   </tr>
 
 </table>

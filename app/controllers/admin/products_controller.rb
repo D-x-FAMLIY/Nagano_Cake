@@ -9,13 +9,13 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.genre_id = params[:product][:genre_id]
     @product.save
-    render admin_product_path
+    redirect_to admin_products_path
   end
 
 
   def show
-    # 商品の新規作成してから
     @product = Product.find(params[:id])
   end
 
@@ -26,15 +26,15 @@ class Admin::ProductsController < ApplicationController
   def update
     @product =  Product.find(params[:id])
     @product.update(product_params)
-    render admin_products_path
+    redirect_to admin_products_path(@product)
   end
 
 
   private
 
-  # def product_params
-  #   params.require(:product).permit(:image,:name,:introduction,:price_without_tax)
-  # end
+  def product_params
+    params.require(:product).permit(:image,:name,:introduction,:price_without_tax,:genre_id,:is_active)
+  end
 
 
 

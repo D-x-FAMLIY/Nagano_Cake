@@ -1,8 +1,9 @@
-<h1>商品編集ページです。</h1>
+
 
 <h2>商品編集</h2>
 
-<%= form_with model:product,local:true do |f| %>
+<%= form_with model:@product, url:admin_product_path(@product.id) do |f| %>
+
 <table>
 <tr>
   <th><%= f.label :商品画像 %></th>
@@ -11,36 +12,40 @@
 
 <tr>
   <th><%= f.label :商品名 %></th>
-  <th><%= f.text_field :name,  %></th>
+  <th><%= f.text_field :name %></th>
 </tr>
 
 <tr>
   <th><%= f.label :商品説明 %></th>
-  <th><%= f.text_area :introduction,  %></th>
+  <th><%= f.text_area :introduction  %></th>
 </tr>
 
 <tr>
   <th><%= f.label :ジャンル %></th>
   <th>
-　<%= f.collection_select(:genre, Genre.all, :id, :name)  %>
+　<%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "--選択してください--")  %>
   </th>
 </tr>
 
 <tr>
   <th><%= f.label :税抜価格 %></th>
-  <th><%= f.text_field :price_without_tax,  %>円</th>
+  <th><%= f.text_field :price_without_tax  %>円</th>
 </tr>
 
 <tr>
   <th><%= f.label :販売ステータス %></th>
   <th>
-  ラジオボックス設置
+    <%= f.radio_button :is_active, :true %>
+    <%= f.label :is_active, "販売中" %>
+
+    <%= f.radio_button :is_active, :false %>
+    <%= f.label :is_active, "販売停止中" %>
   </th>
 </tr>
 </table>
 
 <div>
-  <%= f.submit "変更を保存", class: 'btn btn-success'%>
+  <%= f.submit "変更を保存", class: 'btn btn-success' %>
 </div>
 
 <% end %>

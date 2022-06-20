@@ -8,11 +8,10 @@ class Product < ApplicationRecord
 
 
 
-
   # 画像投稿の記述
-　 def get_image
-    (image.attached?) ? image : 'no_image.jpg'
-  end
+    def get_image
+      (image.attached?) ? image : 'no_image.jpg'
+    end
 
 
 

@@ -1,2 +1,50 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="margin-top: 50px;">
+      <h1>注文情報入力</h1>
+        <ol class="nav" style="text-align-center">
+          <li class="current" style="margin-right: 10px;">1.入力</li>
+          <li style="margin-right:10px; margin-left: 20px;">2.確認</li>
+          <li style="margin-left: 30px;">3.完了</li>
+        </ol>
+    </div>
+    <div class="col-md-6" style="margin-top: 50px;">
+      <%= form_with model: @order, url: public_orders_show_path, method: :post do |f| %>
+      <h4 style="margin-bottom: 20px;">支払い方法</h4>
+        <%= f.radio_button :payment_method, :credit_card %>
+        <%= f.label "クレジットカード" %>
+        <br>
+        <%= f.radio_button :payment_method, :transfer %>
+        <%= f.label "銀行振込" %>
+        <br>
+        
+        <h4 style="margin-top: 30px; margin-bottom: 20px;">お届け先</h4>
+        <%= f.radio_button :address, '1' %>
+        <%= f.label "ご自身の住所" %>
+        <br>
+        <% @address %>
+        <br>
+        <%= f.radio_button :address, '2' %>
+        <%= f.label "登録済み住所から選択" %>
+        <br>
+        <%= @addresses %>
+        <br>
+        <%= f.radio_button :address, '3' %>
+        <%= f.label "新しいお届け先" %>
+        <br>
+        <%= f.label "郵便番号(ハイフンなし)" %>
+        <%= f.text_field :post_code %>
+        <br>
+        <%= f.label "住所" %>
+        <%= f.text_field :address %>
+        <br>
+        <%= f.label "宛名" %>
+        <%= f.text_field :name %>
+        <br>
+        <br>
+        <%= f.submit "確認画面へ進む" %>
+      <% end %>
+    </div>
+        <div class="col-md-3"></div>
+  </div>
+</div>

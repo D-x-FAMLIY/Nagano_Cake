@@ -14,15 +14,16 @@
     </div>
     <div class="col-md-9">
       <table>
+      <%= form_with model: @product, url: public_cart_items_path, local: true, method: :post do |f| %>
         <%= image_tag @product.image, size:"350x300" %>
       <h2><%= @product.name %></h2>
       <p><%= @product.introduction %></p>
       <strong><%= (@product.price_without_tax * 1.1).floor %></strong>
+      <%= f.hidden_field :title, :value => "楽しいRuby" %>
+      <%= f.select :quantity, *[1..4] %>
+      <%= f.submit "カートに入れる" %>
+      <% end %>
       </table>
-      <%= image_tag @product.image, size:"350x300" %>
-      <h2><%= @product.name %></h2>
-      <p><%= @product.introduction %></p>
-      <strong><%= (@product.price_without_tax * 1.1).floor %></strong>
     </div>
   </div>
 </div>

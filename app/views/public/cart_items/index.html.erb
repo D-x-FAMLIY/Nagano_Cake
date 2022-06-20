@@ -8,12 +8,14 @@
     <th>小計</th>
     <th></th>
   </tr>
+  <%= form_with model: @product, url: public_cart_items_path, local: true, method: :patch do |f| %>
   <tr>
     <td><%= @product.name %></td>
     <td><%= (@product.price_without_tax * 1.1).floor %></td>
     <td><%= cart_item.quantity %></td>
-    <td><%= (@product.price_without_tax * 1.1).floor * quantity </td>
+    <td><%= (@product.price_without_tax * 1.1).floor * quantity %> </td>
     <td></td>
   </tr>
+  <% end %>
 </table>
 

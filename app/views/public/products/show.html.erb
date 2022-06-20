@@ -19,7 +19,6 @@
       <h2><%= @product.name %></h2>
       <p><%= @product.introduction %></p>
       <strong><%= (@product.price_without_tax * 1.1).floor %></strong>
-      <%= f.hidden_field :title, :value => "楽しいRuby" %>
       <%= f.select :quantity, *[1..4] %>
       <%= f.submit "カートに入れる" %>
       <% end %>

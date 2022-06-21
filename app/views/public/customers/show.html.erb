@@ -1,11 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3" style="margin-top: 50px;">
+    <div class="col-md-3" style="margin-top: 50px; text-align: center;">
       <h2>マイページ</h2>
     </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-4" style="margin-top: 50px;">
-      <table>
+    <div class="col-md-6" style="margin-top: 50px; text-align: center;">
+      <table class="table table-inverse">
         <tr>
           <th>氏名</th>
           <td><%= @customer.last_name %> <%= @customer.first_name %></td>
@@ -32,9 +31,8 @@
         </tr>
       </table>
   <!--履歴一覧のpathに置き換える。　今のところ仮のpath-->
-
     </div>
-    <div class="col-md-1"></div>
+    
     <div class="col-md-3" style="margin-top: 50px; text-align: center;">
       登録情報
       <br>
@@ -48,5 +46,6 @@
       <br>
       <%= link_to "一覧", public_orders_path, class: 'btn btn-primary' %>
     </div>
+    
   </div>
 </div>

@@ -13,7 +13,7 @@
 
     <div  class="bg-image d-flex justify-content-center align-items-center col-md-6" style="margin-top: 50px; background-image: url('https://seiyogashiclub.co.jp/wp-content/uploads/2020/08/981A2041-scaled-e1597309003681.jpg'); height: 300px;">
       <div style="text-align: center; ">
-        <div class="box">
+        <div class="box" style="background-color: rgba(255, 255, 255, 0.6);">
           <p class="border">
           ようこそ、ながのCAKEへ！<br>
           このサイトは、ケーキ販売のECサイトになります。<br>
@@ -43,7 +43,15 @@
       </div>
     <% end %>
   </div>
-  <div style="text-align: right">
-    <%= link_to "全ての商品を見る>", public_products_path %>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9"></div>
+    <div class="col-md-3" style="text-align: center;">
+      <%= link_to public_products_path, class: 'text-dark' do %>
+        <i class="fa-solid fa-book-open"></i>
+        全ての商品を見る
+      <% end %>
+    </div>
   </div>
 </div>

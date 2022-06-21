@@ -16,7 +16,6 @@ class Public::OrdersController < ApplicationController
   
   def create
     @order = Order.new(order_params)
-    binding.pry
     if @order.save
       redirect_to public_orders_complete_path
     else

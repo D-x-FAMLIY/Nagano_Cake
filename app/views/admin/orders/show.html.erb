@@ -1,34 +1,38 @@
-<h1>注文履歴詳細のページです。</h1>
+
+
+
+
 
 
 <h4>注文履歴詳細</h4>
 
+<table>
+  <tr>
+    <th>購入者</th>
+    <td></td>
+  </tr>
+   <tr>
+    <th>注文日</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>配送先</th>
+    <td> shipping_address.address </td>
+  </tr>
+  <tr>
+    <th>支払方法</th>
+    <td>f.select</td>
+  </tr>
+  <tr>
+    <th>注文ステータス</th>
+    <td></td>
+    <td><%= link_to "更新", '#', class: 'btn btn-success' %></td>
+  </tr>
 
-  <div>
-    購入者
-  
-  </div>
-  
-  <div>
-    注文日
-  </div>
-  
-  <div>
-    配送先
-  </div>
-  
-  <!--enumを用いて選ぶ-->
-  <div>
-    支払方法
-  </div>
-  
-  <!--同じく設定しておく-->
-  <div>
-    注文ステータス
-  <%= link_to "更新", '#', class: 'btn btn-success' %>
-  </div>
-  
-  
+
+</table>
+
+
   <table class='table table-hover table-inverse'>
     <tr>
       <th>商品名</th>
@@ -44,24 +48,24 @@
       <td>数量</td>
       <td>小計</td>
       <td>制作ステータス</td>
-  
+
       <td><%= link_to "更新", '#', class: 'btn btn-success' %></td>
       <%# <%= f.submit class: 'btn btn-secondary' %>
     </tr>
   </table>
-  
-  <div>
-    <div>
-      商品合計
-    </div>
-  
-    <div>
-      送料
-    </div>
-    <div>
-      請求金額合計
-    </div>
-  </div>
-
+  <table>
+    <tr>
+      <th>商品合計</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>送料</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>請求金額合計</th>
+      <td></td>
+    </tr>
+  </table>
 
 

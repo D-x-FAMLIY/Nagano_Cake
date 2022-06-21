@@ -1,6 +1,7 @@
 class Admin::CustomersController < ApplicationController
   def index
-    @customers = Customer.all
+    # ページネーション追加
+    @customers = Customer.page(params[:page]).per(10)
   end
 
   def show
@@ -21,8 +22,8 @@ class Admin::CustomersController < ApplicationController
 private
 
   def customer_params
-ß
-
+    params.require(:customer).permit(:last_name,:first_name,:last_kana,:first_kana,:post_code,:address,:phone_number,:email,:is_deleted)
+  end
 
 
 

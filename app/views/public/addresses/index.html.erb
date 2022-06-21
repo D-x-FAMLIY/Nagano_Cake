@@ -1,10 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-md-3" style="text-align: center; margin-top: 50px;">
       <h3>配送先登録/一覧</h3>
+    </div>
+    <div class="col-md-6" style="text-align: center; margin-top: 50px;">
       <%= form_with model: @address, url: '/public/addresses', method: :post do |f| %>
         <div class="form-group col-xs-12">
           <%= f.label :郵便番号（ハイフンなし） %>
+          <br>
           <%= f.text_field :post_code %>
         </div>
 
@@ -21,6 +24,7 @@
       <% end %>
     </div>
   </div>
+</div>
   <table border="1" style="border-collapse: collapse;margin-top: 30px;">
     <thead>
       <tr bgcolor="#eeeeee" style="height:50px;">

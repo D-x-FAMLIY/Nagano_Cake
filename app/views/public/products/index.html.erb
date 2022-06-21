@@ -1,37 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <table>
-        <tr>
-          <th>ジャンル検索</th>
-        </tr>
+    <div class="col-md-3" style="margin-top: 50px;">
+      <div class="genre" style="text-align: center">
+          <b>ジャンル検索<i class="fa-solid fa-magnifying-glass"></i></b>
         <% @genres.each do |genre| %>
-          <tr>
-            <td><%= link_to genre.name, public_products_path %></td>
-          </tr>
+          <div>
+            <%= link_to genre.name, public_products_path %>
+          </div>
         <% end %>
-      </table>
+      </div>
     </div>
-    <div class="col-md-9">
-      <table>
-        <tr>
-          <th>
-            <h3>商品一覧</h3>
-            <p>(全<% @products.count %>件)</p>
-          </th>
-        </tr>
-        <% @products.each do |product| %>
-          <tr>
-            <th><%= image_tag product.image, size:"50x50" %></th>
-          </tr>
-          <tr>
-            <th><%= link_to product.name, public_product_path(product.id) %></th>
-          </tr>
-          <tr>
-            <th><%= (product.price_without_tax * 1.1).floor %></th>
-          </tr>
-        <% end %>
-      </table>
+    
+    <div class="col-md-9" style="margin-top: 50px;">
+      <h3>商品一覧</h3>
+      <p>(全<% @products.count %>件)</p>
+      <div class="d-flex flex-wrap justify-content-start">
+      <% @products.each do |product| %>
+        <div class="col-md-3" style="margin-top: 20px;">
+          <%= link_to image_tag product.image ,size:"150x100"%>
+          <!--商品をクリックして商品詳細画面への遷移ができてません-->
+          <p><%= product.name %></p>
+          <p>¥<%= (product.price_without_tax * 1.1).floor %></p>
+        </div>
+      <% end %>
+      </div>
+
     </div>
   </div>
 </div>

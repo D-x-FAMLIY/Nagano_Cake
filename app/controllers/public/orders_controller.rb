@@ -11,6 +11,7 @@ class Public::OrdersController < ApplicationController
     @order.address = current_customer.address
     @order.name = current_customer.first_name + current_customer.last_name
     @order_new = Order.new
+    @total = @cart_items.inject(0) {|sum, product| sum + product.subtotal }
   end
   
   def create

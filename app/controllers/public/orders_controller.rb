@@ -3,7 +3,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @address = current_customer.address
   end
-
+  
   def confirm
     @order = Order.new(order_params)
     @cart_items = CartItem.all
@@ -13,12 +13,12 @@ class Public::OrdersController < ApplicationController
     @order_new = Order.new
     @total = @cart_items.inject(0) {|sum, product| sum + product.subtotal }
   end
-
+  
   def create
     @order = Order.new(order_params)
+    binding.pry
     if @order.save
       redirect_to public_orders_complete_path
-      current_customer.cart_items.destroy_all
     else
       render :new
     end
@@ -26,17 +26,18 @@ class Public::OrdersController < ApplicationController
 
   def complete
   end
-
+  
   def index
   end
 
   def show
-
+    @order = Order.new(order_params)
+    @cart_items = current_customer.cart_items
   end
 
-
+  
   private
-
+  
   def order_params
     params.require(:order).permit(:customer_id, :payment_method, :name, :post_code, :address, :postage, :total, :status)
   end

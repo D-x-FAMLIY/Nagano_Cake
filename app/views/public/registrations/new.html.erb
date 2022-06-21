@@ -12,41 +12,41 @@
           <%= f.label :氏名 %>
           <br>
           <span>姓</span>
-          <%= f.text_field :last_name %>
+          <%= f.text_field :last_name, :size=>"20" %>
           <span>名</span>
-          <%= f.text_field :first_name %>
+          <%= f.text_field :first_name, :size=>"20" %>
         </div>
 
         <div class="field">
           <br>
           <span>ｾｲ</span>
-          <%= f.text_field :last_kana %>
+          <%= f.text_field :last_kana, :size=>"20" %>
           <span>ﾒｲ</span>
-          <%= f.text_field :first_kana %>
+          <%= f.text_field :first_kana, :size=>"20" %>
         </div>
 
         <div class="field">
           <%= f.label :メールアドレス %>
           <br>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"40" %>
         </div>
 
         <div class="field">
           <%= f.label :郵便番号（ハイフンなし） %>
           <br>
-          <%= f.text_field :post_code %>
+          <%= f.text_field :post_code, :size=>"40" %>
         </div>
 
         <div class="field">
           <%= f.label :住所 %>
           <br>
-          <%= f.text_field :address %>
+          <%= f.text_field :address, :size=>"40px" %>
         </div>
 
         <div class="field">
           <%= f.label :電話番号（ハイフンなし） %>
           <br>
-          <%= f.telephone_field :phone_number %>
+          <%= f.telephone_field :phone_number, :size=>"40" %>
         </div>
 
         <div class="field">
@@ -55,13 +55,13 @@
           <em>(<%= @minimum_password_length %> 文字以上)</em>
           <% end %>
           <br>
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <%= f.password_field :password, autocomplete: "new-password", :size=>"40" %>
         </div>
 
         <div class="field">
           <%= f.label :パスワード（確認用） %>
           <br>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", :size=>"40" %>
         </div>
         <br>
 

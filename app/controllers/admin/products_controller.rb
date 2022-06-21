@@ -1,6 +1,7 @@
 class Admin::ProductsController < ApplicationController
   def index
-    @products = Product.all
+    # ページネーション追加
+    @products = Product.page(params[:page]).per(10)
   end
 
   def new

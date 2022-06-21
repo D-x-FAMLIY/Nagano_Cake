@@ -22,7 +22,7 @@ class Product < ApplicationRecord
 
     #消費税を求める記述
     def with_tax_price
-      (price * 1.1).floor
+      (price_without_tax * 1.1).floor
     end
 
 

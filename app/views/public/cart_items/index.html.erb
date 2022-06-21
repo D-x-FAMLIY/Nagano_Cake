@@ -27,7 +27,7 @@
      <td><%= f.select :quantity, *[1..100] %></td>
      <td><%= f.submit "変更" %></td>
     <% end %>
-     
+
     <tr>
       <td>
         <%= link_to '削除', public_cart_item_path(cart_item), method: :delete %>
@@ -35,7 +35,7 @@
     </tr>
     <% end %>
     <%= @total %>
-    
+
   </tr>
 </table>
 

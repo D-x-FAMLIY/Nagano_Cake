@@ -17,7 +17,10 @@
       <div class="d-flex flex-wrap justify-content-start">
       <% @products.each do |product| %>
         <div class="col-md-3" style="margin-top: 20px;">
-          <%= link_to image_tag product.image, size:"150x100"%>
+          <%= link_to public_product_path(product.id) do %>
+            <%= image_tag product.image ,size:"150x100"%>
+          <% end %>
+
           <!--商品をクリックして商品詳細画面への遷移ができてません-->
           <p><%= product.name %></p>
           <p>¥<%= (product.price_without_tax * 1.1).floor %></p>

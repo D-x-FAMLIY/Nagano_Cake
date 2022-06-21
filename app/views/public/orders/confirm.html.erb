@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="margin-top: 50px;">
+      <h2>注文情報確認</h2>
+       <ol class="nav" style="text-align-center">
+          <li style="margin-right: 10px;">1.入力</li>
+          <li  class="current" style="margin-right:10px; margin-left: 20px;">2.確認</li>
+          <li style="margin-left: 30px;">3.完了</li>
+        </ol>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-4" style="margin-top: 50px;">
+      <table>
+      <% @cart_items.each do |cart_item| %>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= cart_item.product.name %></td>
+            <td><%= cart_item.quantity %></td>
+          </tr>
+        </tbody>
+      <% end %>
+      </table>
+      <dl>
+        <dt>支払い方法</dt>
+        <dd><%= @order.payment_method %></dd>
+        <dt>お届け先</dt>
+        <dd><%= current_customer.post_code %> <%= current_customer.address %></dd>
+        <dd><%= current_customer.last_name %> <%= current_customer.first_name %></dd>
+      </dl>
+    </div>
+  </div>
+</div>

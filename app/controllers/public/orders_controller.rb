@@ -8,15 +8,18 @@ class Public::OrdersController < ApplicationController
     @addresses = current_customer.addresses
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
-    if params[:order][:order_address] == "1"
-    @order.post_code = current_customer.post_code
-    @order.address = current_customer.address
-    @order.name = current_customer.first_name + current_customer.last_name
-    @order_new = Order.new
     @total = @cart_items.inject(0) {|sum, product| sum + product.subtotal }
+    @order_new = Order.new
+    if params[:order][:order_address] == "1"
+      @order.post_code = current_customer.post_code
+      @order.address = current_customer.address
+      @order.name = current_customer.first_name + current_customer.last_name
     elsif params[:order][:order_address] == "2"
-      
-    else
+      @select_address = current_customer.addresses.find(params[:order][:address_id])
+      @order.post_code = @select_address.post_code
+      @order.name = @select_address.name
+      @order.address = @select_address.address
+    elsif params[:order][:order_address] == "3"
     end
   end
   

@@ -24,6 +24,7 @@
             </td>
             <td>
               <% order.product_orders.each do |product_order| %>
+                <%= image_tag product_order.product.image, size:"25x25" %>
                 <p><%= product_order.product.name %></p>
               <% end %>
             </td>

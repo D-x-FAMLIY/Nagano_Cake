@@ -41,12 +41,11 @@ Rails.application.routes.draw do
     delete 'cart_items/destroy_all'
     resources :cart_items, only: [:index, :update, :create, :destroy]
     #get 'cart_items/index'
-    resources :orders, except: [:edit, :update, :show]
     get 'orders/complete' => 'orders#complete'
+    resources :orders, except: [:edit, :update]
     post 'orders/confirm' => 'orders#confirm'
     #get 'orders/new'
     #get 'orders/index'
-    get 'orders/show' => 'orders#show'
   end
 
 # 顧客用

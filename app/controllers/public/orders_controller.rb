@@ -8,20 +8,23 @@ class Public::OrdersController < ApplicationController
     @addresses = current_customer.addresses
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
+    if params[:order][:order_address] == "1"
     @order.post_code = current_customer.post_code
     @order.address = current_customer.address
     @order.name = current_customer.first_name + current_customer.last_name
     @order_new = Order.new
     @total = @cart_items.inject(0) {|sum, product| sum + product.subtotal }
+    elsif params[:order][:order_address] == "2"
+      
+    else
+    end
   end
   
   def create
     @order = Order.new(order_params)
     if @order.save
-      redirect_to public_orders_complete_path
       current_customer.cart_items.destroy_all
-    elsif @order.save
-      redirect_to 
+      redirect_to public_orders_complete_path
     else
       render :new
     end
@@ -31,6 +34,7 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
+    @orders = Order.all
   end
 
   def show

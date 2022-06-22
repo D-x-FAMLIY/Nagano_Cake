@@ -10,9 +10,9 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-    order = Order.find(params[:id])
-    order.update(status: order.status)
-    redirect_to admin_order_path(order)
+    @order = Order.find(params[:id])
+    @order.update(status: @order.status)
+    redirect_to admin_order_path(@order)
   end
 
   private

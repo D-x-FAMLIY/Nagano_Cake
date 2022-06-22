@@ -11,7 +11,7 @@
     <div class="col-md-2"></div>
     <div class="col-md-4" style="margin-top: 50px;">
       <%= form_with model: @order, url: public_orders_confirm_path, method: :post do |f| %>
-      <h4 style="margin-bottom: 20px;">支払い方法</h4>
+      <h4 style="margin-bottom: 20px;">支払方法</h4>
         <%= f.radio_button :payment_method, :credit_card %>
         <%= f.label "クレジットカード" %>
         <br>

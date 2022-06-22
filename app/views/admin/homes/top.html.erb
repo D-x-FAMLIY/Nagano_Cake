@@ -15,18 +15,21 @@
   </thead>
 
   <tbody>
+    <% @orders.each do |order| %>
     <tr>
       <!--注文の登録日時-->
-      <!--<td> orders.created_at </td>-->
+      <td><%= link_to order.created_at.strftime("%Y-%m-%d %H:%M:%S"), admin_order_path(order) %></td>
       <!--注文の名前-->
-      <!--<td> orders.customer.last_name + "　" + order.customer.first_name </td>-->
+      <td><%= order.customer.last_name + "　" + order.customer.first_name %></td>
       <!--注文の注文商品の数量-->
-      <!--<td> orders.product_orders.quentity</td>-->
+      <td><% order.product_orders.quantity %> </td>
       <!--注文のステータス-->
-      <!--<td> orders.status</td>-->
+      <td> orders.status </td>
+      <% end %>
     </tr>
   </tbody>
 </table>
 
 
 <!--ページネーション入れる-->
+<%= paginate @orders %>

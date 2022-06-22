@@ -5,6 +5,7 @@ class Public::OrdersController < ApplicationController
   end
   
   def confirm
+    @addresses = current_customer.addresses
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
     @order.post_code = current_customer.post_code
@@ -19,6 +20,8 @@ class Public::OrdersController < ApplicationController
     if @order.save
       redirect_to public_orders_complete_path
       current_customer.cart_items.destroy_all
+    elsif @order.save
+      redirect_to 
     else
       render :new
     end

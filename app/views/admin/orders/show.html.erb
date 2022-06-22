@@ -5,7 +5,7 @@
     <table>
       <tr>
         <th>購入者</th>
-        <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
+        <td><%= @order.customer.first_name %><%= @order.customer.last_name %></td>
       </tr>
       <tr>
         <th>注文日</th>
@@ -24,12 +24,12 @@
       </tr>
       <tr>
         <th>支払方法</th>
-        <td><%= @order.payment_method %></td>
+        <td><%= @order.payment_method_i18n %></td>
       </tr>
       <tr>
       <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
         <th>注文ステータス</th>
-        <td><%= f.select :status, ["入金待ち", "入金確認","製作中","発送準備中","発送済み"] %></td>
+        <td><%= f.select :status, Order.statuses.keys%></td>
         <td><%= f.submit "更新", class: 'btn btn-success' %></td>
         <!--更新ボタンはまだ使えません-->
       <% end %>
@@ -42,33 +42,40 @@
         <th>単価(税込)</th>
         <th>数量</th>
         <th>小計</th>
-        <th>制作ステータス</th>
+        <th>製作ステータス</th>
         <th></th>
       </tr>
       <tr>
-        <td>商品名</td>
-        <td>単価(税込)</td>
-        <td>数量</td>
-        <td>小計</td>
-        <td>制作ステータス</td>
-
-        <td><%= link_to "更新", '#', class: 'btn btn-success' %></td>
+      <% @product_orders.each do |product_order| %>
+        <td><%= product_order.product.name %></td>
+        <td><%= product_order.price %></td>
+        <td><%= product_order.quantity %></td>
+        <td><%= product_order.price * product_order.quantity %></td>
+        <%= form_with model: product_order, url: admin_order_path,method: :patch do |f| %>
+        <td>
+          <%= f.select :making_status, ProductOrder.making_statuses.keys %>
+          <%= f.submit "更新",class: 'btn btn-success' %>
+        </td>
+        <% end %>
+      <% end %>
+        <td><!--%= link_to "更新", '#', class: 'btn btn-success' %--></td>
         <%# <%= f.submit class: 'btn btn-secondary' %>
       </tr>
     </table>
     <table>
       <tr>
         <th>商品合計</th>
-        <td></td>
+        <td><%= %></td>
       </tr>
       <tr>
         <th>送料</th>
-        <td></td>
+        <td><%= @order.postage %></td>
       </tr>
       <tr>
         <th>請求金額合計</th>
-        <td></td>
+        <td><%= @order.total %></td>
       </tr>
+
     </table>
     </div>
   </div>

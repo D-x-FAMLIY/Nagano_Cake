@@ -26,6 +26,23 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
+      @cart_items = current_customer.cart_items
+      @cart_items.each do |cart_item|
+        ProductOrder.create!(
+          product_id: cart_item.product_id,
+          order_id: @order.id,
+          quantity: cart_item.quantity,
+          price: cart_item.product.with_tax_price,
+          making_status: "no_making"
+        )
+        # @product_order = ProductOrder.new
+        # @product_order.product_id = cart_item.product_id
+        # @product_order.order_id = @order.id
+        # @product_order.quantity = cart_item.quantity
+        # @product_order.price = cart_item.product.with_tax_price
+        # @product_order.making_status = "no_making"
+        # @product_order.save
+      end
       current_customer.cart_items.destroy_all
       redirect_to public_orders_complete_path
     else
@@ -37,7 +54,7 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
-    @orders = Order.all
+    @orders = current_customer.orders
   end
 
   def show

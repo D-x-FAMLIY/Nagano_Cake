@@ -8,10 +8,8 @@
           <li style="margin-left: 30px;">3.完了</li>
         </ol>
     </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-4" style="margin-top: 50px;">
-      <table>
-      <% @cart_items.each do |cart_item| %>
+    <div class="col-md-8" style="margin-top: 50px;">
+      <table class="table table-inverse">
         <thead>
           <tr>
             <th>商品名</th>
@@ -20,22 +18,43 @@
             <th>小計</th>
           </tr>
         </thead>
+          <% @cart_items.each do |cart_item| %>
         <tbody>
           <tr>
             <td><%= cart_item.product.name %></td>
+            <td></td>
             <td><%= cart_item.quantity %></td>
+            <td></td>
           </tr>
         </tbody>
-      <% end %>
+          <% end %>
       </table>
-      <dl>
-        <dt>支払い方法</dt>
-        <dd><%= @order.payment_method %></dd>
-        <dt>お届け先</dt>
-        <dd><%= current_customer.post_code %> <%= current_customer.address %></dd>
-        <dd><%= current_customer.last_name %> <%= current_customer.first_name %></dd>
-      </dl>
     </div>
+    <div class="container" style="margin-top: 30px;">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-4">
+          <table class="table table-inverse">
+              <tr>
+                <th>宛名</th>
+                <td><%= current_customer.last_name %> <%= current_customer.first_name %></td>
+              </tr>
+            <tr>
+              <th>支払い方法</th>
+              <td><%= @order.payment_method %></td>
+            </tr>
+            <tr>
+              <th>お届け先</th>
+              <td><%= @order.post_code %> <%= @order.address %></td>
+                </td>
+              </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col" style="text-align: center; margin-top: 30px;">
       <%= form_with model: @order_new, url: public_orders_path do |f| %>
       <%= f.hidden_field :customer_id, value: current_customer.id %>
       <%= f.hidden_field :payment_method, value: @order.payment_method %>
@@ -47,5 +66,6 @@
       <%= f.hidden_field :status, value: "no_payment" %>
       <%= f.submit "注文確定" %>
       <% end %>
+    </div>
   </div>
 </div>

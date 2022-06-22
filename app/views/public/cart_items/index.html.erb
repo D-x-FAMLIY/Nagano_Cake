@@ -1,45 +1,98 @@
 
-
-<%= link_to public_cart_items_destroy_all_path, method: :delete  do %>
-  <i class="fa-solid fa-trash"></i>
-<% end %>
-<%= link_to root_path do %>
-  買い物を続ける
-<% end %>
-
-<table>
-  <tr>
-    <th>商品名</th>
-    <th>単価(税込)</th>
-    <th>数量</th>
-    <th>小計</th>
-    <th></th>
-  </tr>
-  <tr>
-    <% @cart_items.each do |cart_item| %>
-    <td><%= image_tag cart_item.product.image, size:"50x50" %><%= cart_item.product.name %></td>
-    <!--td><%= (cart_item.product.price_without_tax * 1.1).floor %></td-->
-    <td><%= cart_item.product.with_tax_price %></td>
-    <td><%= cart_item.quantity %></td>
-    <!--td><%= (cart_item.product.price_without_tax * 1.1).floor * cart_item.quantity %> </td-->
-    <td><%= cart_item.subtotal%></td>
-    <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id) , method: :patch do |f|%>
-     <td><%= f.select :quantity, *[1..100] %></td>
-     <td><%= f.submit "変更" %></td>
-    <% end %>
-
-    <tr>
-      <td>
-        <%= link_to '削除', public_cart_item_path(cart_item), method: :delete %>
-      </td>
-    </tr>
-    <% end %>
-    <%= @total %>
-
-  </tr>
-</table>
-
-
-<%= link_to new_public_order_path do %>
-  注文情報入力に進む
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="text-align: center; margin-top: 50px;">
+      <h2>
+        ショッピング<br>
+        カート
+      </h2>
+    </div>
+    <div class="col-md-8">
+    <table class='table table-inverse' style="margin-top: 50px;">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>
+            <%= link_to public_cart_items_destroy_all_path, method: :delete, class: 'text-dark' do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </th>
+        </tr>
+      </thead>
+      <thead>
+        <tr>
+          <th></th>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>個数変更</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <% @cart_items.each do |cart_item| %>
+          <td><%= image_tag cart_item.product.image, size:"50x50" %></td>
+          <td><%= cart_item.product.name %></td>
+          <td><%= cart_item.product.with_tax_price %></td>
+          <td><%= cart_item.quantity %></td>
+          <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id) , method: :patch do |f|%>
+            <%= f.hidden_field :product_id, value: cart_item.product_id %>
+            <td><%= f.select :quantity, *[1..10] %><br><%= f.submit "変更" %></td>
+          <% end %>
+          <td><%= cart_item.subtotal %></td>
+          <td>
+            <%= link_to public_cart_item_path(cart_item), method: :delete, class: 'text-dark' do %>
+              <i class="fa-solid fa-cart-arrow-down"></i>削除
+            <% end %>
+          </td>
+      </tbody>
+      <% end %>
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>合計金額</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><%= @total %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6" style="text-align: center;">
+      <%= link_to new_public_order_path, class: 'text-dark' do %>
+        <i class="fa-solid fa-file-pen"></i>
+        注文情報入力
+      <% end %>
+      <br>
+      <br>
+      <%= link_to root_path, class: 'text-dark' do %>
+        <i class="fa-solid fa-basket-shopping"></i>
+        買い物を続ける
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3" style="margin-top: 30px;">
-      <h4>ジャンル作成</h4>
+    <div class="col-md-3" style="margin-top: 50px; text-align: center;">
+      <h2>ジャンル作成</h2>
       <!-- ヘルパーメソッド呼び出し-->
       <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
         <%= f.text_field :name, class: 'form-control' %>
@@ -9,12 +9,12 @@
         <%= f.submit '新規登録', class: 'btn btn-primary' %>
       <% end %>
     </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-4" style="margin-top: 30px;">
-      <table>
+    <div class="col-md-6" style="margin-top: 50px; text-align: center;">
+      <table class='table table-inverse'>
         <thead>
           <tr>
-            <th>ジャンル</th>
+            <th>ジャンル名</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -30,8 +30,8 @@
             </td>
             <td>
               <!-- 削除リンクの -->
-              <%= link_to '編集', edit_admin_genre_path(genre) %>
-              <%= link_to '削除', admin_genre_path(genre), method: :delete, data: {comfirm: '本当に削除しますか？', class: 'btn-sm btn-danger'} %>
+              <%= link_to '編集', edit_admin_genre_path(genre), class: 'btn btn-success' %>
+              <%= link_to '削除', admin_genre_path(genre), method: :delete, data: {comfirm: '本当に削除しますか？', class: 'btn-sm btn-danger'}, class: 'btn btn-danger' %>
             </td>
           </tr>
           <% end %>

@@ -27,9 +27,9 @@
         <td><%= @order.payment_method_i18n %></td>
       </tr>
       <tr>
-      <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
+      <%= form_with model: @order, url: admin_order_path do |f| %>
         <th>注文ステータス</th>
-        <td><%= f.select :status, Order.statuses.keys%></td>
+        <td><%= f.select :status, Order.statuses_i18n.invert %></td>
         <td><%= f.submit "更新", class: 'btn btn-success' %></td>
         <!--更新ボタンはまだ使えません-->
       <% end %>
@@ -51,9 +51,9 @@
         <td><%= product_order.price %></td>
         <td><%= product_order.quantity %></td>
         <td><%= product_order.price * product_order.quantity %></td>
-        <%= form_with model: product_order, url: admin_order_path,method: :patch do |f| %>
+        <%= form_with model: product_order, url: admin_order_path do |f| %>
         <td>
-          <%= f.select :making_status, ProductOrder.making_statuses.keys %>
+          <%= f.select :making_status, ProductOrder.making_statuses_i18n.invert %>
           <%= f.submit "更新",class: 'btn btn-success' %>
         </td>
         <% end %>
@@ -65,7 +65,8 @@
     <table>
       <tr>
         <th>商品合計</th>
-        <td><%=  %></td>
+        <td><%= @product_orders.sum(&:subtotal) %></td>
+
       </tr>
       <tr>
         <th>送料</th>

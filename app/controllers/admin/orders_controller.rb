@@ -12,11 +12,11 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order.update(status: @order.status)
-    redirect_to admin_order_path(@order)
+    redirect_to admin_order_path
   end
 
   private
-  def order_status
+  def status
     params.require(:order).permit(:status)
   end
 

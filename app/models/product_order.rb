@@ -10,4 +10,8 @@ class ProductOrder < ApplicationRecord
     product.with_tax_price * quantity
   end
   
+  def subtotal
+    price * quantity
+  end
+  
 end

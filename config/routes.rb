@@ -27,8 +27,11 @@ Rails.application.routes.draw do
     #get 'addresses/index'
     #get 'addresses/edit'
     resources :customers, except: [:index, :show]
-    patch 'customers/decline'
     get  'customers' => 'customers#show', as: 'show'
+    # 退会確認画面
+    get '/customers/:id/confirm' => 'customers#confirm', as: 'confirm'
+    # 論理削除用のルーティング
+    patch '/customers/:id/decline' => 'customers#decline', as: 'decline'
     post 'customers/confirm'
     #get 'customers/show'
     #get 'customers/edit'

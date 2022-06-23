@@ -1,7 +1,7 @@
 class Public::ProductsController < ApplicationController
   def index
     @genres = Genre.all
-    @products = Product.all
+    @products = Product.where(is_active: true)
   end
 
   def show

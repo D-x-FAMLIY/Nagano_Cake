@@ -19,7 +19,7 @@ class Order < ApplicationRecord
     #end
     #sum
   #end
-  
+
     # def subtotal
     #   product_order.with_tax_price * quantity
     # end

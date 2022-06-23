@@ -11,17 +11,17 @@
           <th><%= f.label :商品画像 %></th>
           <td><%= f.file_field :image, accept: "image/*" %></td>
         </tr>
-  
+
         <tr>
           <th><%= f.label :商品名 %></th>
           <td><%= f.text_field :name, placeholder: "商品名" %></td>
         </tr>
-  
+
         <tr>
           <th><%= f.label :商品説明 %></th>
           <td><%= f.text_area :introduction, placeholder: "ここに説明文を記述します" %></td>
         </tr>
-  
+
         <tr>
           <th><%= f.label :ジャンル %></th>
           <td>
@@ -29,7 +29,7 @@
             <%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "--選択してください--")  %>
           </td>
         </tr>
-  
+
         <tr>
           <th><%= f.label :税抜価格 %></th>
           <td>
@@ -37,19 +37,19 @@
             円
           </td>
         </tr>
-  
+
         <tr>
           <th><%= f.label :販売ステータス %></th>
           <td>
             <!--見た目大丈夫　内部のデータ変更-->
             <%= f.radio_button :is_active, :true %>
             <%= f.label :is_active, "販売中" %>
-  
+
             <%= f.radio_button :is_active, :false %>
             <%= f.label :is_active, "販売停止中" %>
           </td>
         </tr>
-        
+
       </table>
 
     </div>

@@ -45,8 +45,8 @@
         <th>製作ステータス</th>
         <th></th>
       </tr>
-      <tr>
       <% @product_orders.each do |product_order| %>
+      <tr>
         <td><%= product_order.product.name %></td>
         <td><%= product_order.price %></td>
         <td><%= product_order.quantity %></td>
@@ -57,15 +57,15 @@
           <%= f.submit "更新",class: 'btn btn-success' %>
         </td>
         <% end %>
-      <% end %>
         <td><!--%= link_to "更新", '#', class: 'btn btn-success' %--></td>
         <%# <%= f.submit class: 'btn btn-secondary' %>
       </tr>
+       <% end %>
     </table>
     <table>
       <tr>
         <th>商品合計</th>
-        <td><%= %></td>
+        <td><%=  %></td>
       </tr>
       <tr>
         <th>送料</th>

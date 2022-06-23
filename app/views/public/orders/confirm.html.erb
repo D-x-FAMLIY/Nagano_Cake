@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3" style="margin-top: 50px;">
+    <div class="col-md-3" style="margin-top: 50px; text-align: center;">
       <h2>注文情報確認</h2>
-       <ol class="nav" style="text-align-center">
-          <li style="margin-right: 10px;">1.入力</li>
-          <li  class="current" style="margin-right:10px; margin-left: 20px;">2.確認</li>
-          <li style="margin-left: 30px;">3.完了</li>
-        </ol>
+      <ol style="list-style:none; text-align:center;">
+        <li>1.入力</li>
+        <li  class="current btn-info">2.確認</li>
+        <li>3.完了</li>
+      </ol>
     </div>
-    <div class="col-md-6" style="margin-top: 50px;">
+    <div class="col-md-5 offset-1" style="margin-top: 50px;">
       <table class="table table-inverse">
         <thead>
           <tr>
@@ -50,10 +50,10 @@
         </tr>
       </table>
     </div>
-    <div class="container" style="margin-top: 30px;">
+    <div class="container">
       <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-6">
+        <div class="col-md-5 offset-1">
           <table class="table table-inverse">
               <tr>
                 <th>宛名</th>
@@ -65,7 +65,7 @@
             </tr>
             <tr>
               <th>お届け先</th>
-              <td><%= @order.post_code %><br><%= @order.address %></td>
+              <td>〒<%= @order.post_code %><br><%= @order.address %></td>
                 </td>
               </tr>
           </table>

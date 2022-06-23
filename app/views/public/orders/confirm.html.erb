@@ -8,7 +8,7 @@
           <li style="margin-left: 30px;">3.完了</li>
         </ol>
     </div>
-    <div class="col-md-8" style="margin-top: 50px;">
+    <div class="col-md-6" style="margin-top: 50px;">
       <table class="table table-inverse">
         <thead>
           <tr>
@@ -21,19 +21,39 @@
           <% @cart_items.each do |cart_item| %>
         <tbody>
           <tr>
-            <td><%= cart_item.product.name %></td>
-            <td></td>
+            <!--商品画像-->
+            <td><%= image_tag cart_item.product.image, size:"50x50" %><%= cart_item.product.name %></td>
+            <!--単価-->
+            <td><%= cart_item.product.with_tax_price %></td>
+            <!--数量-->
             <td><%= cart_item.quantity %></td>
-            <td></td>
+            <!--小計-->
+            <td><%= cart_item.subtotal %></td>
           </tr>
         </tbody>
           <% end %>
       </table>
     </div>
+    <div class="col-md-3" style="margin-top: 50px;">
+      <table class="table table-inverse">
+        <tr>
+          <th>送料</th>
+          <td>800</td>
+        </tr>
+        <tr>
+          <th>商品合計</th>
+          <td><%= @total %></td>
+        </tr>
+        <tr>
+          <th>請求金額</th>
+          <td><%= @total + 800 %></td>
+        </tr>
+      </table>
+    </div>
     <div class="container" style="margin-top: 30px;">
       <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <table class="table table-inverse">
               <tr>
                 <th>宛名</th>
@@ -45,7 +65,7 @@
             </tr>
             <tr>
               <th>お届け先</th>
-              <td><%= @order.post_code %> <%= @order.address %></td>
+              <td><%= @order.post_code %><br><%= @order.address %></td>
                 </td>
               </tr>
           </table>

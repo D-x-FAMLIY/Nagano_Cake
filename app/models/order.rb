@@ -11,6 +11,7 @@ class Order < ApplicationRecord
   validates :post_code, presence:true
   validates :address, presence:true
 
+
   #def total_items
     #sum = 0
       #product_orders.each do |product_order|
@@ -18,4 +19,9 @@ class Order < ApplicationRecord
     #end
     #sum
   #end
+  
+    # def subtotal
+    #   product_order.with_tax_price * quantity
+    # end
+
 end

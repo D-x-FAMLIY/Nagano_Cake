@@ -1,32 +1,36 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3" style="text-align: center; margin-top: 50px;">
-      <h1>注文履歴一覧</h1>
+    <div class="col-md-2" style="text-align: center; margin-top: 50px;">
+      <h1>注文履歴<br>一覧</h1>
     </div>
-    <div class="col-md-9" style="margin-top: center;">
+    <div class="col-md-10" style="margin-top: center; margin-top: 50px;">
       <table class="table table-inverse">
         <thead>
           <tr>
             <th>注文日</th>
             <th>配送先</th>
             <th>商品名</th>
-            <th>合計金額</th>
-            <th></th>
+            <th>支払い金額</th>
+            <th>ステータス</th>
+            <th>注文詳細</th>
           </tr>
         </thead>
         <tbody>
         <% @orders.each do |order| %>
           <tr>
             <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
-            <td><%= order.name %><br>〒<%= order.post_code %><%= order.address %></td>
+            <td><%= order.name %><br>
+                〒<%= order.post_code %><%= order.address %>
+            </td>
             <td>
               <% order.product_orders.each do |product_order| %>
+                <%= image_tag product_order.product.image, size:"25x25" %>
                 <p><%= product_order.product.name %></p>
               <% end %>
             </td>
             <td><%= order.total %></td>
             <td><%= order.status_i18n %></td>
-            <td></td>
+            <td><%= link_to '表示', public_order_path(order.id) %></td>
           </tr>
         <% end %>
         </tbody>

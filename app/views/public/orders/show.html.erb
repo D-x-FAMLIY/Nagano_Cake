@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="text-align: center; margin-top: 50px;">
+      <h2>注文情報<br>
+          詳細</h2>
+    </div>
+    <div class="col-md-5" style="margin-top: 50px;">
+      <table class="table table-inverse">
+        <tr>
+          <th>注文日</th>
+          <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <td><%= @order.address %></td>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
+          <th>ステータス</th>
+          <td><%= @order.status_i18n %></td>
+        </tr>
+      </table>
+    </div>
+      
+    <div class="col-md-4" style="margin-top: 50px; text-align: center;">
+      <table class="table table-inverse">
+        <tr>
+          <th>商品合計</th>
+          <td><%= @order.total %></td>
+        </tr>
+        <tr>
+          <th>配送料</th>
+          <td><%= @order.postage %></td>
+        </tr>
+        <tr>
+          <th>ご請求金額</th>
+          <td></td>
+        </tr>
+        
+      </table>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-9" style="margin-top: 50px;">
+      <table class="table table-inverse">
+        <thead>
+          <tr>
+            <th>商品</th>
+            <th>単価</th>
+            <th>個数</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <% @order.product_orders.each do |product_order| %>
+              <%= image_tag product_order.product.image, size:"50x50" %>
+                 <p><%= product_order.product.name %></p>
+              <% end %>
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+  </div>
+</div>

@@ -50,7 +50,7 @@
         <td><%= product_order.product.name %></td>
         <td><%= product_order.price %></td>
         <td><%= product_order.quantity %></td>
-        <td><%= product_order.price * product_order.quantity %></td>
+        <td><%= product_order.subtotal %></td>
         <%= form_with model: product_order, url: admin_order_path do |f| %>
         <td>
           <%= f.select :making_status, ProductOrder.making_statuses_i18n.invert %>

@@ -8,8 +8,10 @@
         <tr>
           <th>購入者</th>
           <td>
-            <%= @order.customer.last_name %>
-            <%= @order.customer.first_name %>
+            <%= link_to admin_customer_path(@order.id) do %>
+              <%= @order.customer.last_name %>
+              <%= @order.customer.first_name %>
+            <% end %>
             </td>
         </tr>
         <tr>
@@ -58,19 +60,17 @@
         <th>数量</th>
         <th>小計</th>
         <th>製作ステータス</th>
-        <th></th>
       </tr>
       <% @product_orders.each do |product_order| %>
       <tr>
-        <td><%= image_tag product_order.product.image, size:"25x25" %></td>
-        <td><%= product_order.product.name %></td>
+        <td><%= image_tag product_order.product.image, size:"25x25" %><%= product_order.product.name %></td>
         <td><%= product_order.price %></td>
         <td><%= product_order.quantity %></td>
         <td><%= product_order.subtotal %></td>
         <%= form_with model: product_order, url: admin_order_path do |f| %>
         <td>
           <%= f.select :making_status, ProductOrder.making_statuses_i18n.invert %>
-          <%= f.submit "更新",class: 'btn btn-success' %>
+          <br><br><%= f.submit "更新",class: 'btn btn-success' %>
         </td>
         <% end %>
         <td><!--%= link_to "更新", '#', class: 'btn btn-success' %--></td>

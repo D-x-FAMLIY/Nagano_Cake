@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     #get 'products/new'
     # create追加
     #get 'products/create'
-    #get 'products/show'
+    # get 'products/show'
     #get 'products/edit'
     resources :customers, only: [:index, :show, :edit, :update]
     #get 'customers/index'

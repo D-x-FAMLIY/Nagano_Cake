@@ -5,8 +5,8 @@
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-6" style="margin-top: 50px;">
-    <%= form_with model:@product, url: admin_products_path  do |f| %>
-      <table>
+    <%= form_with model: @product, url: admin_products_path do |f| %>
+      <table class="table table-inverse">
         <tr>
           <th><%= f.label :商品画像 %></th>
           <td><%= f.file_field :image, accept: "image/*" %></td>

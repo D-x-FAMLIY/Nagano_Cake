@@ -28,12 +28,8 @@
           <td><%= @product.genre.name %></td>
         </tr>
         <tr>
-          <th>税込価格</th>
-          <td><%= (@product.price_without_tax * 1.1).floor %></td>
-        </tr>
-        <tr>
-          <th>(税抜価格)</th>
-          <td>(<%= @product.price_without_tax %>)円</td>
+          <th>税込価格(税抜価格)</th>
+          <td><%= (@product.price_without_tax * 1.1).floor %>(<%= @product.price_without_tax %>)円</td>
         </tr>
         <tr>
           <th>販売ステータス</th>

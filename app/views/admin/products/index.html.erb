@@ -20,7 +20,6 @@
             <td><%= product.id %></td>
             <td><%= link_to product.name, admin_product_path(product), class: 'text-dark' %></td>
             <td><%= product.price_without_tax %></td>
-            <!--ジャンルにアソシエーション-->
             <td><%= product.genre.name %></td>
             <% if product.is_active == true %>
               <td>販売中</td>

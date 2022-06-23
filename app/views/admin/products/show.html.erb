@@ -1,46 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="text-align: center; margin-top: 50px;">
+      <h2>商品詳細</h2>
+    </div>
 
-
-<h4>商品詳細</h4>
-
-
-  <table>
-
+    <div class="col-md-6" style="text-align: center; margin-top: 50px;">
     <%= image_tag @product.get_image, size: '300x300' %>
-
-
-    <tr>
-      <th>商品名</th>
-      <td><%= @product.name %></td>
-    </tr>
-    <tr>
-    <tr>
-      <th>商品説明</th>
-      <td><%= @product.introduction %></td>
-    </tr>
-    <tr>
-      <th>ジャンル</th>
-      <td><%= @product.genre.name %></td>
-    </tr>
-    <tr>
-      <th>税込価格</th>
-      <td><%= (@product.price_without_tax * 1.1).floor %></td>
-      <td>(<%= @product.price_without_tax %>)円</td>
-    </tr>
-    <tr>
-      <th>(税抜価格)</th>
-    </tr>
-    <tr>
-      <th>販売ステータス</th>
-        <% if @product.is_active == true %>
-            <td>販売中</td>
-        <% else %>
-            <td>販売停止中</td>
-        <% end %>
-    </tr>
-</table>
-
-  <%= link_to "編集する", edit_admin_product_path(@product.id), class: 'btn btn-success' %>
-
-
-
-
+    </div>
+    <div class="col-md-3" style="margin-top: 50px; text-align: center;"> 
+      <%= link_to "編集する", edit_admin_product_path(@product.id), class: 'btn btn-success' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="margin-top: 50px;">
+      <table class="table table-inverse">
+        <tr>
+          <th>商品名</th>
+          <td><%= @product.name %></td>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <td><%= @product.introduction %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @product.genre.name %></td>
+        </tr>
+        <tr>
+          <th>税込価格</th>
+          <td><%= (@product.price_without_tax * 1.1).floor %></td>
+        </tr>
+        <tr>
+          <th>(税抜価格)</th>
+          <td>(<%= @product.price_without_tax %>)円</td>
+        </tr>
+        <tr>
+          <th>販売ステータス</th>
+            <% if @product.is_active == true %>
+                <td>販売中</td>
+            <% else %>
+                <td>販売停止中</td>
+            <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

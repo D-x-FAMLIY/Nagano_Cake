@@ -1,5 +1,6 @@
 class Admin::GenresController < ApplicationController
   #アクションが動く前にset_genreメソッドを実行
+  before_action :authenticate_admin!
   before_action :set_genre, only: [:edit, :update, :destroy]
   
   def index

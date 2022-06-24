@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
   def new
     @order = Order.new
     @address = current_customer.address
@@ -9,6 +10,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0) {|sum, product| sum + product.subtotal }
+    @order.postage = 800
     @order_new = Order.new
     if params[:order][:order_address] == "1"
       @order.post_code = current_customer.post_code

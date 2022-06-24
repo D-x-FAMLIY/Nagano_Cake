@@ -16,10 +16,19 @@ class Admin::OrdersController < ApplicationController
       @order.product_orders.each do |product_order|
         product_order.update(making_status: "wait_making")
       end
-      redirect_to admin_order_path(@order)
-    else @order.update(status)
-      redirect_to admin_order_path(@order)
+    elsif @order.product_order[:making_status] == "now_making"
+      @order.product_order.update(making_status)
+      @order.update(status: "production")
+    elsif @order.product_orders[:making_status] == "complete_making"
+      @product_order.update(making_status)
+      @order.update(status: "ready_to_ship")
+    elsif params[:order][:status] == "sent"
+      @order.update(status)
+      @orde.update(status: "sent")
+    else
+      @order.update
     end
+    redirect_to admin_order_path(@order)
   end
 
   private
@@ -27,4 +36,7 @@ class Admin::OrdersController < ApplicationController
     params.require(:order).permit(:status)
   end
 
+  def making_status
+    params.require(:product_order).permit(:making_status)
+  end
 end

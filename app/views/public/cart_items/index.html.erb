@@ -87,10 +87,13 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6" style="text-align: center;">
+    <% if @cart_items.exists? %>
       <%= link_to new_public_order_path, class: 'text-dark' do %>
         <i class="fa-solid fa-file-pen"></i>
         注文情報入力
       <% end %>
+    <% else %>
+    <% end %>
       <br>
       <br>
       <%= link_to root_path, class: 'text-dark' do %>

@@ -1,59 +1,77 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6" style="text-align: center; margin-top: 50px;">
+    <div class="col-md-3" style="margin-top: 50px; text-align: center;">
+      <h2>会員情報編集</h2>
+    </div>
+    <div class="col-md-8" style="margin-top: 50px;">
 
-      <h3>会員情報編集</h3>
       <%= form_with model: @customer, url: public_customer_path, method: :patch do |f| %>
+      <table class="table">
 
         <div class="field">
-          <%= f.label :氏名 %>
-          <br>
-          <span>姓</span>
-          <%= f.text_field :last_name %>
-          <span>名</span>
-          <%= f.text_field :first_name %>
-        </div>
-
-        <div class="field">
-          <br>
-          <span>セイ</span>
-          <%= f.text_field :last_kana %>
-          <span>メイ</span>
-          <%= f.text_field :first_kana %>
-        </div>
-
-        <div class="field">
-          <%= f.label :メールアドレス %>
-          <br>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :郵便番号（ハイフンなし） %>
-          <br>
-          <%= f.text_field :post_code %>
+          <tr>
+            <th>
+              <%= f.label :氏名 %>
+            </th>
+            <td>姓<br>
+              <%= f.text_field :last_name %>
+            </td>
+            <td>名<br>
+              <%= f.text_field :first_name %>
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td>ｾｲ<br>
+              <%= f.text_field :last_kana %>
+            </td>
+            <td>ﾒｲ<br>
+              <%= f.text_field :first_kana %>
+            </td>
+          </tr>
         </div>
 
         <div class="field">
-          <%= f.label :住所 %>
-          <br>
-          <%= f.text_field :address %>
+          <tr>
+            <th>メール<br>アドレス</th>
+            <td>
+              <!--<%= f.label :メールアドレス %>--><p></p>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td>
+            <%= f.label :郵便番号（ハイフンなし） %><br>
+            <%= f.text_field :post_code %>
+            </td>
+            <td>
+              <!--<%= f.label :住所 %>--><p></p>
+              <%= f.text_area :address %>
+            </td>
+          </tr>
         </div>
 
         <div class="field">
-          <%= f.label :電話番号（ハイフンなし） %>
-          <br>
-          <%= f.telephone_field :phone_number %>
+          <tr>
+            <th>電話番号</th>
+            <td>
+              <!--<%= f.label :電話番号（ハイフンなし） %>-->
+              <%= f.telephone_field :phone_number %>
+            </td>
+            <td></td>
+          </tr>
         </div>
-        <br>
-        <div class="actions">
-          <%= f.submit "編集内容を保存" %>
-        </div>
-        <br>
-        <div>
-          <%= link_to "退会する", public_confirm_path,class: 'btn btn-danger' %>
-        </div>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" style="text-align: center;">
+      <%= f.submit "編集内容を保存" %>
+      <br>
+      <br>
+      <%= link_to "退会する", public_confirm_path,class: 'btn btn-danger' %>
       <% end %>
     </div>
   </div>

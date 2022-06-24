@@ -1,4 +1,6 @@
 class Admin::ProductsController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     # ページネーション追加
     @products = Product.page(params[:page]).per(10)
@@ -12,7 +14,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.genre_id = params[:product][:genre_id]
     @product.save
-    redirect_to admin_products_path
+    redirect_to admin_product_path(@product)
   end
 
 

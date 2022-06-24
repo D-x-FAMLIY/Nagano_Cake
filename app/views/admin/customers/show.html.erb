@@ -1,53 +1,70 @@
-
-
-<h4><%= @customer.last_name %><%= @customer.first_name %>
-    さんの会員詳細</h4>
-
-<table>
-  <tr>
-    <th>会員ID</th>
-    <td><%= @customer.id %></td>
-  </tr>
-  <tr>
-    <th>氏名</th>
-    <td><%= @customer.last_name %> <%= @customer.first_name %></td>
-  </tr>
-  <tr>
-    <th>フリガナ</th>
-    <td><%= @customer.last_kana %> <%= @customer.first_kana %></td>
-  </tr>
-  <tr>
-    <th>郵便番号</th>
-    <td><%= @customer.post_code %></td>
-  </tr>
-  <tr>
-   <th>住所</th>
-   <td><%= @customer.address %></td>
-  </th>
-  <tr>
-    <th>電話番号</th>
-    <td><%= @customer.phone_number %></td>
-  </tr>
-  <tr>
-    <th>メールアドレス</th>
-    <td><%= @customer.email %></td>
-  </tr>
-  <tr>
-    <th>会員ステータス</th>
-    <!--ステータスの記述を行う。-->
-    <% if @customer.is_deleted == false %>
-        <td>有効</td>
-    <% else %>
-        <td>退会</td>
-    <% end %>
-  </tr>
-</table>
-
-
-
-<%= link_to "編集する",edit_admin_customer_path(@customer),class: 'btn btn-success' %>
-  <!--履歴一覧のpathに置き換える。　今のところ仮のpath-->
-<%= link_to "注文履歴一覧を見る", admin_root_path, class: 'btn btn-primary' %>
-
-<%= link_to "会員一覧を見る(仮)", admin_customers_path, class: 'btn btn-primary' %>
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="text-align: center; margin-top: 50px;">
+      <h2><%= @customer.last_name %><%= @customer.first_name %>さん<br>の会員詳細</h2>
+    </div>
+    <div class="col-md-6" style="margin-top: 50px;">　
+    <table class="table table-inverse">
+      <tr>
+        <th>会員ID</th>
+        <td><%= @customer.id %></td>
+      </tr>
+      <tr>
+        <th>氏名</th>
+        <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+      </tr>
+      <tr>
+        <th>フリガナ</th>
+        <td><%= @customer.last_kana %> <%= @customer.first_kana %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= @customer.post_code %></td>
+      </tr>
+      <tr>
+       <th>住所</th>
+       <td><%= @customer.address %></td>
+      </th>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @customer.phone_number %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @customer.email %></td>
+      </tr>
+      <tr>
+        <th>会員ステータス</th>
+        <!--ステータスの記述を行う。-->
+        <% if @customer.is_deleted == false %>
+            <td>有効</td>
+        <% else %>
+            <td>退会</td>
+        <% end %>
+      </tr>
+    </table>
+    </div>
+    <div class="col-md-3" style="margin-top: 50px;">
+      <table>
+        <tr>
+          <td>
+            <%= link_to "編集",edit_admin_customer_path(@customer),class: 'btn btn-success' %>
+          </td>
+        </tr>
+        <br>
+        <tr>
+          <td>
+            <!--履歴一覧のpathに置き換える。　今のところ仮のpath-->
+            <%= link_to "注文履歴一覧", admin_root_path, class: 'btn btn-primary' %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <%= link_to "会員一覧", admin_customers_path, class: 'btn btn-primary' %>
+          </td>
+        </tr>
+      </table>
+    
+    </div>
+  </div>
+</div>

@@ -19,10 +19,10 @@ class Order < ApplicationRecord
     end
      sum
   end
-  
-  
-  
-  
+
+
+
+
 
   #def total_items
     #sum = 0

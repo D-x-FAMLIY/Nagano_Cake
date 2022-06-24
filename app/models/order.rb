@@ -12,7 +12,6 @@ class Order < ApplicationRecord
   validates :address, presence:true
 
 
-
   def total_items
      sum = 0
       product_orders.each do |product_order|

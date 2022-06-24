@@ -19,10 +19,10 @@
         </thead>
         <tbody>
           <tr>
-          <% @products.each do |product| %>           
+          <% @products.each do |product| %>
             <td>
               <%= link_to public_product_path(product.id) do %>
-                <%= image_tag product.image ,size:"150x100"%>
+                <%= image_tag product.image ,size: "150x100"%>
               <% end %>
             </td>
             <td>

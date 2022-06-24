@@ -4,7 +4,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @address = current_customer.address
   end
-  
+
   def confirm
     @addresses = current_customer.addresses
     @order = Order.new(order_params)
@@ -24,7 +24,7 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:order_address] == "3"
     end
   end
-  
+
   def create
     @order = Order.new(order_params)
     if @order.save
@@ -54,7 +54,7 @@ class Public::OrdersController < ApplicationController
 
   def complete
   end
-  
+
   def index
     @orders = current_customer.orders
   end
@@ -62,12 +62,12 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order.postage = 800
-    @order.total = @order.total + @order.postage 
+    @order.total = @order.total + @order.postage
   end
 
-  
+
   private
-  
+
   def order_params
     params.require(:order).permit(:customer_id, :payment_method, :name, :post_code, :address, :postage, :total, :status)
   end

@@ -67,16 +67,14 @@
         <td><%= product_order.price %></td>
         <td><%= product_order.quantity %></td>
         <td><%= product_order.subtotal %></td>
-        <%= form_with model: product_order, url: admin_order_path do |f| %>
+        <%= form_with model: product_order, url: admin_order_path(@order) do |f| %>
         <td>
-          <%= f.select :making_status, ProductOrder.making_statuses_i18n.invert %>
+          <%= f.select :making_status, ProductOrder.making_statuses_i18n.invert %>     
           <br><br><%= f.submit "更新",class: 'btn btn-success' %>
         </td>
         <% end %>
-        <td><!--%= link_to "更新", '#', class: 'btn btn-success' %--></td>
-        <%# <%= f.submit class: 'btn btn-secondary' %>
       </tr>
-       <% end %>
+      <% end %>
     </table>
     </div>
     <div class="col-md-3" style="margin-top: 30px;">
@@ -93,8 +91,6 @@
         <th>請求金額合計</th>
         <td><%= @order.total + @order.postage %></td>
       </tr>
-
-
       </table>
     </div>
   </div>

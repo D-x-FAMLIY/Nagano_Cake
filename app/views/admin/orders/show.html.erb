@@ -45,7 +45,6 @@
           <td><%= f.select :status, Order.statuses_i18n.invert %></td>
           <td><%= f.submit "更新", class: 'btn btn-success' %></td>
         </tr>
-          <!--更新ボタンはまだ使えません-->
         <% end %>
       </table>
     </div>
@@ -69,7 +68,7 @@
         <td><%= product_order.subtotal %></td>
         <%= form_with model: product_order, url: admin_order_path(@order) do |f| %>
         <td>
-          <%= f.select :making_status, ProductOrder.making_statuses_i18n.invert %>     
+          <%= f.select :making_status, ProductOrder.making_statuses_i18n.invert %>
           <br><br><%= f.submit "更新",class: 'btn btn-success' %>
         </td>
         <% end %>

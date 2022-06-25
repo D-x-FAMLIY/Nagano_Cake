@@ -22,6 +22,8 @@ class Public::OrdersController < ApplicationController
       @order.name = @select_address.name
       @order.address = @select_address.address
     elsif params[:order][:order_address] == "3"
+    else
+      redirect_to new_public_order_path
     end
   end
 

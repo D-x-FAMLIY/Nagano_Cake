@@ -7,7 +7,7 @@ class Admin::ProductOrdersController < ApplicationController
     @product_orders = @order.product_orders
     @product_order.update(making_status)
 
-    if @product_order.making_status == "now_makingg"
+    if @product_order.making_status == "now_making"
       @order.update(status: "production")
     end
 

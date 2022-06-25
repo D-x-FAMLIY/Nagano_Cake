@@ -1,5 +1,8 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
+  
+  before_action :customer_is_deleted
+  
   def new
     @order = Order.new
     @address = current_customer.address
@@ -73,4 +76,11 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:customer_id, :payment_method, :name, :post_code, :address, :postage, :total, :status)
   end
+  
+    def customer_is_deleted
+    if customer_signed_in? && current_customer.is_deleted?
+      redirect_to root_path
+    end
+  end
+  
 end

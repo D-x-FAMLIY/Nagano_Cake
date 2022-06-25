@@ -1,6 +1,8 @@
 class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
   
+  before_action :customer_is_deleted
+  
   def index
     @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0) {|sum, product| sum + product.subtotal }
@@ -40,4 +42,11 @@ class Public::CartItemsController < ApplicationController
   def cart_item_params
       params.require(:cart_item).permit(:customer_id, :product_id, :quantity)
   end
+  
+   def customer_is_deleted
+    if customer_signed_in? && current_customer.is_deleted?
+      redirect_to root_path
+    end
+  end
+  
 end

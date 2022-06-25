@@ -16,7 +16,6 @@ class Admin::OrdersController < ApplicationController
     @order.update(status)
     @product_order = @order.product_orders
 
-
     if @order.status == "confirm_payment"
       @order.product_orders.each do |product_order|
         product_order.update(making_status: "wait_making")
@@ -34,7 +33,6 @@ class Admin::OrdersController < ApplicationController
       #@order.update
     end
     redirect_to admin_order_path(@order)
-
   end
 
   private
@@ -43,7 +41,6 @@ class Admin::OrdersController < ApplicationController
   end
 
   def making_status
-    params.require(:product_order).permit(:making_status)
+    params.require(:product_order).perit(:making_status)
   end
-
 end

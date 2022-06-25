@@ -4,8 +4,8 @@
       <h2>会員情報編集</h2>
     </div>
     <div class="col-md-8" style="margin-top: 50px;">
+      <%= form_with model: @customer, url: public_customer_path, method: :patch do |f| %>
       <table class="table">
-        <%= form_with model: @customer, url: public_customer_path, method: :patch do |f| %>
         <div class="field">
           <tr>
             <th>
@@ -19,7 +19,7 @@
             </td>
           </tr>
           <tr>
-            <th></th>
+            <th><%= f.label :フリガナ %></th>
             <td>ｾｲ<br>
               <%= f.text_field :last_kana %>
             </td>
@@ -58,17 +58,21 @@
             </td>
             <td></td>
           </tr>
+          <tr>
+            <th></th>
+            <td><%= f.submit "編集内容を保存" %></td>
+            <td></td>
+          </tr>
         </div>
       </table>
+      <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12" style="text-align: center;">
-      <%= f.submit "編集内容を保存" %>
       <br>
       <br>
       <%= link_to "退会する", public_confirm_path,class: 'btn btn-danger' %>
-      <% end %>
     </div>
   </div>
 </div>

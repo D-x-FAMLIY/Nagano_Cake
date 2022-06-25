@@ -38,10 +38,10 @@
           <tr>
             <th></th>
             <td>
+              <% if current_customer.addresses.exists? %>
               <%= f.radio_button :order_address, '2' %>
               <%= f.label :order_address, "登録済み住所から選択" %>
             <td>
-              <% if current_customer.addresses.exists? %>
               <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses.all, :id, :address_display) %>
               <% else %>
               <%= link_to "配送先作成", public_addresses_path, class: "btn btn-info btn-sm" %>

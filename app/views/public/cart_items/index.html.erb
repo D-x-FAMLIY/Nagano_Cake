@@ -94,12 +94,18 @@
       <% end %>
     <% else %>
     <% end %>
+    <br>
+    <br>
+    <%= link_to public_orders_path, class: 'text-dark' do %>
+      <i class="fa-solid fa-clock-rotate-left"></i>
+      注文履歴一覧へ
+    <% end %>
       <br>
       <br>
-      <%= link_to root_path, class: 'text-dark' do %>
-        <i class="fa-solid fa-basket-shopping"></i>
-        買い物を続ける
-      <% end %>
+    <%= link_to root_path, class: 'text-dark' do %>
+      <i class="fa-solid fa-basket-shopping"></i>
+      買い物を続ける
+    <% end %>
     </div>
   </div>
 </div>

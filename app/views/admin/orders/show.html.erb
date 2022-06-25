@@ -67,7 +67,7 @@
         <td><%= product_order.price %></td>
         <td><%= product_order.quantity %></td>
         <td><%= product_order.subtotal %></td>
-        <%= form_with model: product_order, url: admin_order_path(@order) do |f| %>
+        <%= form_with model: product_order, url: admin_product_order_path(product_order) do |f| %>
         <td>
           <%= f.select :making_status, ProductOrder.making_statuses_i18n.invert %>
           <br><br><%= f.submit "更新",class: 'btn btn-success' %>

@@ -11,13 +11,10 @@ class Admin::ProductOrdersController < ApplicationController
       @order.update(status: "production")
     end
 
-    if @order.product_order.count == @order.product_orders.where(making_status: "complete_making").count
+    if @order.product_orders.count == @order.product_orders.where(making_status: "complete_making").count
       @order.update(status: "ready_to_ship")
     end
-
     redirect_to admin_order_path(@order)
-
-
   end
 
   private

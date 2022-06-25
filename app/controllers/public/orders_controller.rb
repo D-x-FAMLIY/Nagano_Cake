@@ -77,7 +77,7 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:customer_id, :payment_method, :name, :post_code, :address, :postage, :total, :status)
   end
   
-    def customer_is_deleted
+  def customer_is_deleted
     if customer_signed_in? && current_customer.is_deleted?
       redirect_to root_path
     end

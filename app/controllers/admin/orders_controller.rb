@@ -14,13 +14,15 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order.update(status)
+
+    @product_order = @order.product_orders
+
     if @order.status == "confirm_payment"
       @order.product_orders.each do |product_order|
         product_order.update(making_status: "wait_making")
       end
     end
     redirect_to admin_order_path(@order)
-
   end
 
   private

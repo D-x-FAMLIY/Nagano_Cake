@@ -73,9 +73,10 @@
       </div>
     </div>
   </div>
+  <%= form_with model: @order_new, url: public_orders_path do |f| %>
   <div class="row">
     <div class="col" style="text-align: center; margin-top: 30px;">
-      <%= form_with model: @order_new, url: public_orders_path do |f| %>
+    <% if @cart_items.exists? %>
       <%= f.hidden_field :customer_id, value: current_customer.id %>
       <%= f.hidden_field :payment_method, value: @order.payment_method %>
       <%= f.hidden_field :postage, value: 800 %>
@@ -85,7 +86,10 @@
       <%= f.hidden_field :address, value: @order.address %>
       <%= f.hidden_field :status, value: "no_payment" %>
       <%= f.submit "注文確定" %>
-      <% end %>
+    <% else %>
+      <strong>注文する商品が見つかりません</strong>
+    <% end %>
     </div>
   </div>
+  <% end %>
 </div>

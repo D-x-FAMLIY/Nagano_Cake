@@ -1,5 +1,8 @@
 class Admin::ProductsController < ApplicationController
   before_action :authenticate_admin!
+  
+  #退会済みユーザー
+  before_action :customer_is_deleted, except: [:index]
 
   def index
     # ページネーション追加
@@ -37,6 +40,13 @@ class Admin::ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:image,:name,:introduction,:price_without_tax,:genre_id,:is_active)
+  end
+  
+  #退会済みユーザーはrootに遷移
+  def customer_is_deleted
+    if customer_signed_in? && current_customer.is_deleted?
+      redirect_to root_path
+    end
   end
 
 

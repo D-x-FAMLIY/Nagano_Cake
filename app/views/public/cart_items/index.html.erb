@@ -18,8 +18,10 @@
           <th></th>
           <th></th>
           <th>
-            <%= link_to public_cart_items_destroy_all_path, method: :delete, class: 'text-dark' do %>
-              <i class="fa-solid fa-trash"></i>
+            <% if customer_signed_in? %>
+              <%= link_to public_cart_items_destroy_all_path, method: :delete, class: 'text-dark' do %>
+                <i class="fa-solid fa-trash"></i>
+              <% end %>
             <% end %>
           </th>
         </tr>
@@ -48,8 +50,10 @@
           <% end %>
           <td><%= cart_item.subtotal %></td>
           <td>
-            <%= link_to public_cart_item_path(cart_item), method: :delete, class: 'text-dark' do %>
-              <i class="fa-solid fa-cart-arrow-down"></i>削除
+            <% if customer_signed_in? %>
+              <%= link_to public_cart_item_path(cart_item), method: :delete, class: 'text-dark' do %>
+                <i class="fa-solid fa-cart-arrow-down"></i>削除
+              <% end %>
             <% end %>
           </td>
       </tbody>
@@ -83,10 +87,13 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6" style="text-align: center;">
+    <% if @cart_items.exists? %>
       <%= link_to new_public_order_path, class: 'text-dark' do %>
         <i class="fa-solid fa-file-pen"></i>
         注文情報入力
       <% end %>
+    <% else %>
+    <% end %>
       <br>
       <br>
       <%= link_to root_path, class: 'text-dark' do %>

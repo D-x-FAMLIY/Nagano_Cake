@@ -14,24 +14,10 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order.update(status)
-    @product_order = @order.product_orders
-
-
     if @order.status == "confirm_payment"
       @order.product_orders.each do |product_order|
         product_order.update(making_status: "wait_making")
       end
-    #elsif @order.product_order[:making_status] == "now_making"
-      #@order.product_order.update(making_status)
-      #@order.update(status: "production")
-    #elsif @order.product_orders[:making_status] == "complete_making"
-      #@product_order.update(making_status)
-      #@order.update(status: "ready_to_ship")
-    #elsif params[:order][:status] == "sent"
-      #@order.update(status)
-      #@orde.update(status: "sent")
-    #else
-      #@order.update
     end
     redirect_to admin_order_path(@order)
 
@@ -40,10 +26,6 @@ class Admin::OrdersController < ApplicationController
   private
   def status
     params.require(:order).permit(:status)
-  end
-
-  def making_status
-    params.require(:product_order).permit(:making_status)
   end
 
 end

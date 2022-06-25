@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :homes, only: [:top]
     resources :orders, only: [:show, :update]
+    resources :product_orders, only: [:update]
     resources :products
     #get 'products/index'
     #get 'products/new'

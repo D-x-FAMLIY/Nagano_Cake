@@ -44,14 +44,16 @@
   </div>
   <div class="row">
     <div class="col-md-12" style="text-align: center; margin-top: 20px;">
-      <%= form_with model: @cart_item, url: public_cart_items_path, local: true, method: :post do |f| %>
-
-      <%= f.hidden_field :customer_id, value: current_customer.id %>
-      <%= f.hidden_field :product_id, value: @product.id %>
-      <%= f.select :quantity, *[1..10] %>
-      <%= f.submit "カートに入れる" %>
-
+    <%= form_with model: @cart_item, url: public_cart_items_path, local: true, method: :post do |f| %>
+      <% if customer_signed_in? %>
+        <%= f.hidden_field :customer_id, value: current_customer.id %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.select :quantity, *[1..10] %>
+        <%= f.submit "カートに入れる" %>
+      <% else %>
+        <%= f.submit "カートに追加するにはログインが必要です" %>
       <% end %>
+    <% end %>
     </div>
   </div>
 </div>

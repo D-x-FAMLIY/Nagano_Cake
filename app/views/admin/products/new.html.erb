@@ -5,8 +5,8 @@
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-6" style="margin-top: 50px;">
+      <%= form_with model: @product, url: admin_products_path do |f| %>
       <table class="table table-inverse">
-        <%= form_with model: @product, url: admin_products_path do |f| %>
         <tr>
           <th><%= f.label :商品画像 %></th>
           <td><%= f.file_field :image, accept: "image/*" %></td>
@@ -43,13 +43,19 @@
             <%= f.label :is_active, "販売停止中" %>
           </td>
         </tr>
+        <tr>
+          <th></th>
+          <td>
+            <%= f.submit "新規登録", class: 'btn btn-success' %>
+          </td>
+        </tr>
       </table>
+      <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12" style="text-align: center; margin-top: 10px;">
-      <%= f.submit "新規登録", class: 'btn btn-success' %>
-      <% end %>
+
     </div>
   </div>
 </div>

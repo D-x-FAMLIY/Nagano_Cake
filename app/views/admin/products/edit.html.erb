@@ -38,14 +38,19 @@
           <%= f.label :is_active, "販売停止中" %>
         </th>
       </tr>
+      <tr>
+        <th></th>
+        <td><%= f.submit "変更を保存", class: 'btn btn-success' %></td>
+      </tr>
       </table>
+      <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12" style="text-align: center;">
-        <%= f.submit "変更を保存", class: 'btn btn-success' %>
-      
-      <% end %>
+
+
+
     </div>
   </div>
 </div>

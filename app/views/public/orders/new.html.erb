@@ -1,3 +1,4 @@
+<%= form_with model: @order, url: public_orders_confirm_path, method: :post do |f| %>
 <div class="container">
   <div class="row">
     <div class="col-md-3" style="margin-top: 50px; text-align: center;">
@@ -9,7 +10,6 @@
       </ol>
     </div>
     <div class="col-md-7 offset-1" style="margin-top: 50px;">
-      <%= form_with model: @order, url: public_orders_confirm_path, method: :post do |f| %>
       <table class="table table-inverse">
         <tbody>
           <tr>
@@ -68,12 +68,18 @@
           </tr>
           <tr>
             <th></th>
-            <td><%= f.submit "確認画面へ進む" %></td>
+            <td>
+              </td>
             <td></td>
           </tr>
         </tbody>
       </table>
-      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" style="text-align: center;">
+      <%= f.submit "確認画面へ進む" %>
     </div>
   </div>
  </div>
+<% end %>

@@ -1,10 +1,10 @@
+<%= form_with model:@customer, url:admin_customer_path(@customer.id) do |f| %>
 <div class="container">
   <div class="row">
     <div class="col-md-3" style="text-align: center; margin-top: 50px;">
-      <%= form_with model:@customer, url:admin_customer_path(@customer.id) do |f| %>
       <h2><%= @customer.last_name %> <%= @customer.first_name %>さん<br>の会員情報編集</h2>
     </div>
-    <div class="col-md-6" style="margin-top: 50px;">
+    <div class="col-md-8" style="margin-top: 50px;">
 
       <table class="table table-inverse">
         <tr>
@@ -58,20 +58,13 @@
           <%= f.label :is_deleted, "退会" %>
           </td>
         </tr>
-        <tr>
-          <th></th>
-          <td><%= f.submit "変更を保存", class: 'btn btn-success' %></td>
-        </tr>
       </table>
-      <% end %>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6" style="text-align: center;">
-
-
-
+    <div class="col-md-12" style="text-align: center;">
+          <%= f.submit "変更を保存", class: 'btn btn-success' %>
+      <% end %>
     </div>
   </div>
 </div>

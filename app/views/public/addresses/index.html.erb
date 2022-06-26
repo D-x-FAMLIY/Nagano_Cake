@@ -1,3 +1,4 @@
+<%= form_with model: @address, url: '/public/addresses', method: :post do |f| %>
 <div class="container">
   <div class="row">
     
@@ -6,7 +7,6 @@
     </div>
 
     <div class="col-md-5 offset-1" style="margin-top: 50px;">
-    <%= form_with model: @address, url: '/public/addresses', method: :post do |f| %>
       <table class="table">
         <div class="form-group col-xs-12">
           <tr>
@@ -36,8 +36,9 @@
       <%= f.submit '新規登録', class: 'btn btn-success pull-right' %>
     </div>
   </div>
-  <% end %>
-  
+</div>
+<% end %>
+<div class="container">
   <div class="row">
     <div class="col-md-8 offset-4" style="margin-top: 50px;" >
       <table border="1" style="border-collapse: collapse; margin-top: 30px;">
@@ -65,4 +66,4 @@
       </table>
     </div>
   </div>
-</div>
+</div>  
